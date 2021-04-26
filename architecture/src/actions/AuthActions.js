@@ -2,11 +2,12 @@ import axios from 'axios';
 import { GET_ERRORS, GET_TOKEN } from "../actions/Types";
 import jwt_decode from "jwt-decode";
 import setJWToken from "../utils/setJwtToken";
+import client from 'services/api';
 
 export const getToken = (login) => async (dispatch) => { 
     try {
-        const res = await axios.post(
-            "uz/cas/login",
+        const res = await client.post(
+            "/uz/cas/login",
             login 
         ); 
         const token = await res.data.body; 

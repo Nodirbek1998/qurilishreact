@@ -74,8 +74,8 @@ export class Admin extends Component {
             <div className="container-fuild">
                 <div className="row derictor-navbar">
                 <nav className="navbar navbar-expand-md p-3">
-                    <p className="text-light ml-5" >
-                        <Link to="/derictor" className="bg-light p-1 mr-5 ortga"><img src="../images/sign-in.png" className="back-icon" alt="ortga qaytish" /> ortga</Link>
+                    <p className="text-light ml-5 mt-2" >
+                        <Link to="/derictor" className="bg-light pl-3 pr-3 p-2 mr-5 ortga"><img src="../images/sign-in.png" className="back-icon" alt="ortga qaytish" /> ortga</Link>
                     ADMIN
                     </p>
                     <ul className="navbar-nav">

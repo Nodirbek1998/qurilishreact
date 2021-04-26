@@ -87,6 +87,10 @@ nav{
     margin: 4px 0 0 -6px;
     vertical-align: text-top;
 }
+.ortga{
+    color: black;
+    font-weight: bold;
+}
 .back-icon{
     width: 18px;
     height: 18px;

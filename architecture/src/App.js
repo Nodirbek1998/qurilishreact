@@ -18,8 +18,9 @@ import GIPprojectManager from './components/pages/GIPManagerProject';
 import GIPproject from './components/pages/GIPProject';
 import AllProject from './components/pages/AllProject';
 import AdminProject from './components/pages/AdminProject';
+// import {PersistGate} from 'redux-persist/integration/react'
 
-const token = localStorage.jwtToken;
+const token = localStorage.getItem('jwtToken');
 if (token) {
   setJWToken(token);
   const decoded = jwt_decode(token)
@@ -34,34 +35,36 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          <Route exact path="/" component={Login} />
-          <Switch>
-            <PrivateRoute exact path="/register" component={Register} />
-          </Switch>
-          <Switch>
-            <PrivateRoute exact path="/derictor" component={Derictor} />
-          </Switch>
-          <Switch>
-            <PrivateRoute exact path="/admin" component={Admin} />
-          </Switch>
-          <Switch>
-            <PrivateRoute exact path="/users" component={Users} />
-          </Switch>
-          <Switch>
-            <PrivateRoute exact path="/project/:id" component={UserPanel} />
-          </Switch>
-          <Switch>
-            <PrivateRoute exact path="/gip-project-manager/:id" component={GIPprojectManager} />
-          </Switch>
-          <Switch>
-            <PrivateRoute exact path="/gipProject" component={GIPproject} />
-          </Switch>
-          <Switch>
-            <PrivateRoute exact path="/allProject" component={AllProject} />
-          </Switch>
-          <Switch>
-            <PrivateRoute exact path="/gip-project-director/:id" component={AdminProject} />
-          </Switch>
+          {/* <PersistGate persistor={persistor}> */}
+            <Route exact path="/" component={Login} />
+            <Switch>
+              <PrivateRoute exact path="/register" component={Register} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/derictor" component={Derictor} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/admin" component={Admin} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/users" component={Users} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/project/:id" component={UserPanel} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/gip-project-manager/:id" component={GIPprojectManager} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/gipProject" component={GIPproject} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/allProject" component={AllProject} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/gip-project-director/:id" component={AdminProject} />
+            </Switch>
+          {/* </PersistGate> */}
         </BrowserRouter>
       </Provider>
     );
