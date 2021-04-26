@@ -18,7 +18,6 @@ import GIPprojectManager from './components/pages/GIPManagerProject';
 import GIPproject from './components/pages/GIPProject';
 import AllProject from './components/pages/AllProject';
 import AdminProject from './components/pages/AdminProject';
-// import {PersistGate} from 'redux-persist/integration/react'
 
 const token = localStorage.getItem('jwtToken');
 if (token) {

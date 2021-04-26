@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import { GET_ERRORS, GET_MESSAGE, GET_PROJECTS } from './Types';
 import client from 'services/api';
 export const getProjects = () => async dispatch =>{
@@ -18,7 +18,7 @@ export const getProjects = () => async dispatch =>{
 
 export const createProject = (project) => async dispatch =>{
     try{
-        const res = await axios.post("https://architecture-manager-web.herokuapp.com/uz/cas/project", project); console.log(res)
+        const res = await client.post("/uz/cas/project", project); console.log(res)
         dispatch({
             type: GET_MESSAGE,
             payload : res.data.body
@@ -32,7 +32,7 @@ export const createProject = (project) => async dispatch =>{
 };
 export const deleteProject = (id) => async dispatch =>{
     try{
-        const res = await axios.delete(`https://architecture-manager-web.herokuapp.com/uz/cas/project/${id}`); console.log(res)
+        const res = await client.delete(`/uz/cas/project/${id}`); console.log(res)
         dispatch({
             type: GET_MESSAGE,
             payload : res.data.body
@@ -47,7 +47,7 @@ export const deleteProject = (id) => async dispatch =>{
 
 export const editProject = (id, project) => async dispatch =>{ console.log(id, project)
     try{
-        const res = await axios.put(`https://architecture-manager-web.herokuapp.com/uz/cas/project/${id}`, project); 
+        const res = await client.put(`/uz/cas/project/${id}`, project); 
         dispatch({
             type: GET_MESSAGE,
             payload : res.data.body
@@ -61,7 +61,7 @@ export const editProject = (id, project) => async dispatch =>{ console.log(id, p
 };
 export const getProjectusername = (username) => async dispatch =>{ 
     try{
-        const res = await axios.post(`https://architecture-manager-web.herokuapp.com/uz/cas/project/user`, {"username" : username}); 
+        const res = await client.post(`/uz/cas/project/user`, {"username" : username}); 
         dispatch({
             type: GET_PROJECTS,
             payload : res.data.body
@@ -76,7 +76,7 @@ export const getProjectusername = (username) => async dispatch =>{
 
 export const getAllProject = () => async dispatch =>{ 
     try{
-        const res = await axios.get(`https://architecture-manager-web.herokuapp.com/uz/cas/project/all`); 
+        const res = await client.get(`/uz/cas/project/all`); 
         dispatch({
             type: GET_PROJECTS,
             payload : res.data.body

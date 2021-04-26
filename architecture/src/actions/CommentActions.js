@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import {GET_ERRORS, GET_MESSAGE} from './Types'
 import client from 'services/api';
 

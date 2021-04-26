@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import { GET_ERRORS, GET_TOKEN } from "../actions/Types";
 import jwt_decode from "jwt-decode";
 import setJWToken from "../utils/setJwtToken";
