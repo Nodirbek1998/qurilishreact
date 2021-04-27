@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
-import {addPercent} from '../../actions/ProgreesActions'
+import {addDocument} from '../../actions/ProjectActions'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
-export class CommentModal extends Component {
+export class DocumentModal extends Component {
 
     constructor(){
         super();
         this.state = {
-            percent : ""
+            document : ""
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -17,33 +17,34 @@ export class CommentModal extends Component {
     
 
     onChange(e){
+        console.log(e.target.name)
         this.setState({ [e.target.name] : e.target.value});
+        
     }
 
     onSubmit(){
-        const percent = {
-            percent : this.state.percent,
-            projectId : this.props.projectId,
-            userId : this.props.userId
+        const comment = {
+            comment : this.state.document,
+            projectId : this.props.projectId
         }
-        this.props.addPercent(percent)
+        this.props.addDocument(comment)
     }
 
     render() {
         return (
-            <div className="modal" id="percentModal">
-                <div className="modal-dialog w-50">
+            <div className="modal" id="documentModal">
+                <div className="modal-dialog">
                     <div className="modal-content">     
                         <div className="modal-body">
                             <form className="m-5 register-form text-center">
                                 <div className="row">
-                                    <h4 className="loyiha-boshqaruvi" style={{marginLeft:'200px'}}>Loyihalar Boshqaruvi</h4>
+                                    <h4 className="loyiha-boshqaruvi">Hujjatlar</h4>
                                 </div>
-                                <div className="row text-center" style={{marginLeft:'200px'}}>
-                                    <input name="percent" type="number" onChange={this.onChange} placeholder="Commentariya" 
-                                    className="w-50" required/>
+                                <div className="row">
+                                    <textarea name="document" type="text" onChange={this.onChange} placeholder="Hujjatlar" 
+                                    className="w-100 m-5" style={{minHeight:"150px"}} required defaultValue={this.props.document}/>
                                 </div>
-                                <button className="btn btn-success pl-5 pr-5 pt-2 pb-2" type="button" data-dismiss="modal"  onClick={this.onSubmit}>Ro'yhatdan o'tqazish</button>
+                                <button className="btn btn-success pl-5 pr-5 pt-2 pb-2" type="button" data-dismiss="modal"  onClick={this.onSubmit}>Hujjatlarni kiritish</button>
                             </form>
                         </div>
                         <div className="modal-footer">
@@ -57,8 +58,8 @@ export class CommentModal extends Component {
     }
 }
 
-CommentModal.propTypes = {
-    addPercent : PropTypes.func.isRequired
+DocumentModal.propTypes = {
+    addDocument : PropTypes.func.isRequired
 }
 
-export default connect(null, {addPercent}) (CommentModal)
+export default connect(null, {addDocument}) (DocumentModal)

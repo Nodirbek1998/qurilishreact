@@ -67,7 +67,7 @@ export class UserPanel extends Component {
                             </div>
                         </td>
                         <td>
-                            {row.progresses.length >  0 ? 
+                            {row.progresses.length >  0 && project.project_make? 
                             <button className="btn btn-danger mr-5 pl-3 pr-3 text-light" data-toggle="modal" data-target="#gipProjectModal"
                             onClick={() => this.onCilick(row)}>Tasdiqlash 
                             </button>

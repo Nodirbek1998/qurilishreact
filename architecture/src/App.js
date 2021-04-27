@@ -18,6 +18,8 @@ import GIPprojectManager from './components/pages/GIPManagerProject';
 import GIPproject from './components/pages/GIPProject';
 import AllProject from './components/pages/AllProject';
 import AdminProject from './components/pages/AdminProject';
+import Manager from './components/pages/Manager';
+import ProjectManager  from 'components/pages/ProjectManager';
 
 const token = localStorage.getItem('jwtToken');
 if (token) {
@@ -61,7 +63,13 @@ class App extends Component {
               <PrivateRoute exact path="/allProject" component={AllProject} />
             </Switch>
             <Switch>
+              <PrivateRoute exact path="/manager" component={Manager} />
+            </Switch>
+            <Switch>
               <PrivateRoute exact path="/gip-project-director/:id" component={AdminProject} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/manager-project/:id" component={ProjectManager} />
             </Switch>
           {/* </PersistGate> */}
         </BrowserRouter>

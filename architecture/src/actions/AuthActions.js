@@ -16,10 +16,9 @@ export const getToken = (login) => async (dispatch) => {
         localStorage.setItem("jwtToken", token);
         dispatch(setCurrentUser(decode));
     } catch (errors) {
-    console.log(errors);
     dispatch({
         type: GET_ERRORS,
-        payload: errors.data,
+        payload: errors.response.data,
     });
     }
 };

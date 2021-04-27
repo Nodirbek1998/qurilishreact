@@ -43,25 +43,25 @@ class Register extends Component {
                 <img className="bacgimg" src="./images/bacgimg.jpg" alt="qurilish" />
                 <div className="row">
                     <div className="col-md-4 offset-4 register">
-                        <Link to="/admin"><img src="../images/backspace-solid.svg" className="backspace" alt="ortga qaytish" /></Link>
+                        <Link to="/admin"><span className="fas fa-backspace"></span></Link>
                         <form className="m-5 register-form" onSubmit={this.onSubmit}>
                             <div className="row">
                                 <h4 className="loyiha-boshqaruvi">Loyihalar Boshqaruvi</h4>
                             </div>
                             <div className="row">
-                                <input name="firstName" type="text" onChange={this.onChange} placeholder="Ismingiz" />
+                                <input name="firstName" type="text" onChange={this.onChange} placeholder="Ismingiz" required/>
                             </div>
                             <div className="row">
-                                <input name="lastName" type="text" onChange={this.onChange}  placeholder="Familiyangiz" />
+                                <input name="lastName" type="text" onChange={this.onChange}  placeholder="Familiyangiz" required/>
                             </div>
                             <div className="row">
-                                <input name="job" type="text" onChange={this.onChange}  placeholder="Lavozimingiz" />
+                                <input name="job" type="text" onChange={this.onChange}  placeholder="Lavozimingiz" required/>
                             </div>
                             <div className="row">
-                                <input name="username" type="text" onChange={this.onChange}  placeholder="Login" />
+                                <input name="username" type="text" onChange={this.onChange}  placeholder="Login" required/>
                             </div>
                             <div className="row">
-                                <input name="password" type="password" onChange={this.onChange}  placeholder="password" />
+                                <input name="password" type="password" onChange={this.onChange}  placeholder="password" required/>
                             </div>
                             <button className="btn btn-success pl-5 pr-5 pt-2 pb-2" type="submit">Ro'yhatdan o'tqazish</button>
                         </form>

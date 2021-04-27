@@ -1,10 +1,10 @@
 
 import {GET_ERRORS, GET_MESSAGE, GET_PROGRESS} from './Types'
 import client from 'services/api';
-export const getProgress = (project) => async dispatch =>{ console.log( project)
+
+export const getProgress = (project) => async dispatch =>{
     try{
         const res = await client.post('/uz/cas/progress/getPercent', project);
-        console.log(res);
         dispatch({
             type : GET_PROGRESS,
             payload : res.data.body
@@ -16,10 +16,9 @@ export const getProgress = (project) => async dispatch =>{ console.log( project)
         })
     }   
 }; 
-export const addPercent = (percent) => async dispatch =>{ console.log(percent)
+export const addPercent = (percent) => async dispatch =>{ 
     try{
         const res = await client.post(`/uz/cas/progress`, percent);
-        console.log(res);
         dispatch({
             type : GET_MESSAGE,
             payload : res.data.body
@@ -31,10 +30,9 @@ export const addPercent = (percent) => async dispatch =>{ console.log(percent)
         })
     }   
 }; 
-export const pushPercent = (id) => async dispatch =>{ console.log(id)
+export const pushPercent = (id) => async dispatch =>{ 
     try{
         const res = await client.get(`/uz/cas/progress/add/${id}`);
-        console.log(res);
         dispatch({
             type : GET_MESSAGE,
             payload : res.data.body

@@ -29,7 +29,7 @@ export const getUsermap = () => async dispatch =>{
         });
     }
 }
-export const addUser = (user, history) => async dispatch =>{ console.log(user)
+export const addUser = (user, history) => async dispatch =>{ 
     try{
         const res = await client.post("/uz/cas/user", user);
         dispatch({
@@ -45,7 +45,7 @@ export const addUser = (user, history) => async dispatch =>{ console.log(user)
     }
 };
 
-export const editUser = (user, history, id) => async dispatch =>{ console.log(user, id)
+export const editUser = (user, history, id) => async dispatch =>{ 
     try{
         const res = await client.post(`/uz/cas/user/${id}`, user);
         dispatch({

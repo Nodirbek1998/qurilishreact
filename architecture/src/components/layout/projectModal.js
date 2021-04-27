@@ -117,6 +117,7 @@ export class Modal extends Component {
                                         onChange={this.onChange}
                                         placeholder="Project Name"
                                         defaultValue={this.state.projectName}
+                                        required
                                     />
                                 </div>
                                 <Select
@@ -129,6 +130,7 @@ export class Modal extends Component {
                                         }
                                     ]}
                                     options={generateUser(this.props.users)}
+                                    required
                                 />
                                 <DatePicker
                                     className=" w-100"
@@ -143,6 +145,7 @@ export class Modal extends Component {
                                     value={moment(this.state.projectFinish, 'YYYY-MM-DD')}
                                     onChange={this.onChangeupdate}
                                     placeholder="Finished project"
+                                    aria-required
                                 />
                                 <Select
                                     className="mb-3 w-100"
@@ -150,6 +153,7 @@ export class Modal extends Component {
                                     onChange={this.heandleChange}
                                     options={generateUser(this.props.users)}
                                     defaultValue={userListOptions}
+                                    isRequired
                                 />
                                 
                                     <button

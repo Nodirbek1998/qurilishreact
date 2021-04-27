@@ -103,31 +103,38 @@ export class Modal extends Component {
                                         name="projectName"
                                         type="text"
                                         onChange={this.onChange}
-                                        placeholder="Project Name"
+                                        placeholder="Loyiha nomi"
+                                        required
                                     />
                                 </div>
                                 <Select
                                     className="w-100"
                                     onChange={this.heandleChanged}
                                     options={generateUser(users)}
+                                    placeholder="Loyiha boshqaruvchisi"
+                                    required
                                 />
                                 <DatePicker
                                     className=" w-100"
                                     name="projectCreat"
                                     onChange={this.onChangecreat}
-                                    placeholder="Created project"
+                                    placeholder="Loyiha boshlash vaqti"
+                                    required
                                 />
                                 <DatePicker
                                     className="w-100 mb-3"
                                     name="projectFinish"
                                     onChange={this.onChangeupdate}
-                                    placeholder="Finished project"
+                                    placeholder="Liyiha tugash vaqti"
+                                    required
                                 />
                                 <Select
                                     className="mb-3 w-100"
                                     isMulti
                                     onChange={this.heandleChange}
                                     options={generateUser(users)}
+                                    required
+                                    placeholder="Loyiha bajaruvchilari"
                                 />
                                     <button
                                         className="btn btn-success pl-5 pr-5 pt-2 pb-2"

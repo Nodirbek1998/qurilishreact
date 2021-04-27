@@ -44,7 +44,7 @@ export class CommentModal extends Component {
                                 </div>
                                 <div className="row">
                                     <textarea name="comment" type="text" onChange={this.onChange} placeholder="Commentariya" 
-                                    className="w-100 m-5" style={{minHeight:"150px"}}/>
+                                    className="w-100 m-5" style={{minHeight:"150px"}} required/>
                                 </div>
                                 <button className="btn btn-success pl-5 pr-5 pt-2 pb-2" type="button" data-dismiss="modal"  onClick={this.onSubmit}>Ro'yhatdan o'tqazish</button>
                             </form>

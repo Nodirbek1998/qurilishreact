@@ -19,9 +19,8 @@ export class CommentModal extends Component {
 
     render() {
         const user = this.props.user;
-        console.log(user.progresses)
         let row;
-        if(user.progresses !== undefined){ console.log(user.progresses)
+        if(user.progresses !== undefined){ 
             row = user.progresses.map(item =>{
                 return(
                     <form className="m-5 register-form text-center" key={item.id}>

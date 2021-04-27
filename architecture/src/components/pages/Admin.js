@@ -60,9 +60,9 @@ export class Admin extends Component {
                         <td>{row.hiddenPassword}</td>
                         <td>
                             <button className="btn btn-danger p-1 pl-3 mr-3 pr-3 text-light" onClick={() => this.deleteUser(row.id)}>Delete 
-                            <img src="../images/user-times-solid.svg" className="icon" alt="ortga qaytish" /></button>
+                            <span className="fas fa-user-times pl-3"></span></button>
                             <button type="button" className="btn btn-warning p-1 pl-3 pr-3 text-light" data-toggle="modal" data-target="#userModal"  
-                            onClick={() => this.onClick(row)}>Edit <img src="../images/edit-regular.svg" className="icon" alt="ortga qaytish" /></button>
+                            onClick={() => this.onClick(row)}>Edit <span className="fas fa-edit pl-2"></span></button>
                         </td>
                     </tr>
                 );
@@ -75,14 +75,14 @@ export class Admin extends Component {
                 <div className="row derictor-navbar">
                 <nav className="navbar navbar-expand-md p-3">
                     <p className="text-light ml-5 mt-2" >
-                        <Link to="/derictor" className="bg-light pl-3 pr-3 p-2 mr-5 ortga"><img src="../images/sign-in.png" className="back-icon" alt="ortga qaytish" /> ortga</Link>
+                        <Link to="/derictor" className=" pl-3 pr-3 p-2 mr-5"><span className="fas fa-sign-in-alt text-light"></span></Link>
                     ADMIN
                     </p>
                     <ul className="navbar-nav">
                     <li className="nav-item">
                         <Link to="/register">
                             <button className="btn btn-light">
-                                Ro'hatdan o'tkazish <img src="../images/plus-circle-solid.svg" className="back-icon" alt="ortga qaytish" />
+                                Ro'hatdan o'tkazish <span className="fas fa-plus-circle"></span>
                             </button>
                         </Link>
                     </li>

@@ -81,7 +81,7 @@ class Derictor extends Component {
                             <li className="nav-item">
                                 <button className="btn btn-light ml-5" type="button" data-toggle="modal" data-target="#creatProjectModal"
                                     onClick={() => this.projectStateClear()}>Yangi loyiha qo'shish 
-                                    <img src="../images/plus-circle-solid.svg" className="icon" alt="ortga qaytish" /></button>
+                                    <span className="fas fa-plus-circle"></span></button>
                             </li>
                         </ul>
                     </nav>

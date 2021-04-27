@@ -35,11 +35,12 @@ class Login extends Component {
                 case "admin" :  newProps.history.push("/derictor");   break;
                 case "gip" :  newProps.history.push("/gipProject"); break;
                 case "user" :  newProps.history.push("/users"); break;
+                case "projectControl" :  newProps.history.push("/manager"); break;
                 default : newProps.history.push("/")
             }
         }
         if (newProps.errors) {
-        this.setState({ errors: newProps.errors.errors });
+            this.setState({ errors: newProps.errors.errors });
         }
     }
 
@@ -68,21 +69,22 @@ class Login extends Component {
 
 
     render() {
+        const { errors } = this.state;
         return (
             <div className="container-fuild">
                 <img className="bacgimg" src="./images/bacgimg.jpg" alt="qurilish" />
                 <div className="row">
                     <div className="col-md-4 offset-4 login">
-                        {/* {this.getErrors(errors)} */}
+                        {this.getErrors(errors)}
                         <form className="m-5 login-form" onSubmit={this.onSubmit}>
                             <div className="row">
                                 <h4 className="loyiha-boshqaruvi">Loyihalar Boshqaruvi</h4>
                             </div>
                             <div className="row">
-                                <input name="username" type="text" placeholder="Login" onChange={this.onChange} />
+                                <input name="username" type="text" placeholder="Login" onChange={this.onChange} required />
                             </div>
                             <div className="row">
-                                <input name="password" type="password" placeholder="password"  onChange={this.onChange}/>
+                                <input name="password" type="password" placeholder="password"  onChange={this.onChange} required/>
                             </div>
                             <button className="btn btn-success pl-5 pr-5 pt-2 pb-2">Kirish</button>
                         </form>

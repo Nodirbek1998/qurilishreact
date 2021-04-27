@@ -14,13 +14,14 @@ export class Modal extends Component {
             lastName : '',
             job : '',
             username : '',
-            password : ''
+            password : '',
+            errors : {}
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-    componentWillReceiveProps(newProps){ console.log(newProps)
+    componentWillReceiveProps(newProps){ 
         this.setState({
             id : newProps.user.id,
             firstName: newProps.user.firstName,
@@ -34,7 +35,6 @@ export class Modal extends Component {
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
-
     
     onSubmit(e) { 
         e.preventDefault();
@@ -59,24 +59,24 @@ export class Modal extends Component {
                                     <h4 className="loyiha-boshqaruvi">Loyihalar Boshqaruvi</h4>
                                 </div>
                                 <div className="row">
-                                    <input name="firstName" type="text" onChange={this.onChange} placeholder="Ismingiz" 
-                                    defaultValue={this.state.firstName}/>
+                                    <input required name="firstName" type="text" onChange={this.onChange} placeholder="Ismingiz" 
+                                    defaultValue={this.state.firstName} className="form-control required error"/>
                                 </div>
                                 <div className="row">
-                                    <input name="lastName" type="text" onChange={this.onChange}  placeholder="Familiyangiz" 
-                                    defaultValue={this.state.lastName}/>
+                                    <input required name="lastName" type="text" onChange={this.onChange}  placeholder="Familiyangiz" 
+                                    defaultValue={this.state.lastName} className="form-control required error" />
                                 </div>
                                 <div className="row">
-                                    <input name="job" type="text" onChange={this.onChange}  placeholder="Lavozimingiz" 
-                                    defaultValue={this.state.job}/>
+                                    <input required name="job" type="text" onChange={this.onChange}  placeholder="Lavozimingiz" 
+                                    defaultValue={this.state.job} className="form-control required error"/>
                                 </div>
                                 <div className="row">
-                                    <input name="username" type="text" onChange={this.onChange}  placeholder="Login" 
-                                    defaultValue={this.state.username}/>
+                                    <input required name="username" type="text" onChange={this.onChange}  placeholder="Login" 
+                                    defaultValue={this.state.username} className="form-control required error" />
                                 </div>
                                 <div className="row">
-                                    <input name="password" type="password" onChange={this.onChange}  placeholder="password" 
-                                    defaultValue={this.state.password}/>
+                                    <input required name="password" type="password" onChange={this.onChange}  placeholder="password" 
+                                    defaultValue={this.state.password} className="form-control required error"/>
                                 </div>
                                 <button className="btn btn-success pl-5 pr-5 pt-2 pb-2" type="button" data-dismiss="modal"  onClick={this.onSubmit}>Ro'yhatdan o'tqazish</button>
                             </form>

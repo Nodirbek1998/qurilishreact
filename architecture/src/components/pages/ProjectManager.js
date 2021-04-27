@@ -2,38 +2,45 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {getProgress} from '../../actions/ProgreesActions'
-import CommentModal from '../layout/CommentModal'
-import PercentModal from '../layout/PercentModal'
+import DocumentModal from '../layout/DocumentModal'
+import {activeProject} from '../../actions/ProjectActions'
 
-export class UserPanel extends Component {
+export class ProjectManager extends Component {
     constructor() {
         super();  
         this.state = {
-            userid : ''
+            userid : '',
+            document : ''
         }
-        this.onCilick = this.onCilick.bind(this);
+        this.onClick = this.onClick.bind(this);
+        this.editDocument = this.editDocument.bind(this);
     }
 
     componentDidMount(){
-        if(this.props.token.role[0].roleName !== 'user'){
+        if(this.props.token.role[0].roleName !== 'projectControl'){
             this.props.history.push("/")
         }else{
         const id = this.props.match.params.id;
+        console.log(id);
         const percent = {
             projectId : id
         }
         this.props.getProgress(percent)}
     }
 
-    onCilick(id){
-        this.setState({userid : id})
+    onClick(){
+        this.props.activeProject(this.props.match.params.id)
     }
 
+    editDocument(document){
+        this.setState({
+            document : document
+        })
+    }
     render() {
         let count = 0;
         let tablebody;
         const project = this.props.project;
-        console.log(project)
         if(project.usersList !== undefined){
             tablebody =Array.isArray(project.usersList)?project.usersList.map((row) => { count = count + 1
                 return (
@@ -58,25 +65,6 @@ export class UserPanel extends Component {
                                 {row.userPercent}%</div>
                             </div>
                         </td>
-                        <td>
-                            {row.username === this.props.token.username && project.projectMake?
-                                <button className="btn btn-danger mr-5 pl-3 pr-3 text-light" data-toggle="modal" data-target="#commentModal"
-                                onClick = {() => this.onCilick(row.id)}>Izoh 
-                                <span className="fas fa-edit ml-2"></span></button> 
-                                    : 
-                                <button className="btn btn-danger mr-5 pl-3 pr-3 text-light" disabled>Izoh 
-                                <span className="fas fa-edit pl-3"></span></button>
-                            }
-                            {row.username === this.props.token.username && project.projectMake ?
-                                <button type="button" className="btn btn-warning  pl-3 pr-3 text-light" data-toggle="modal" data-target="#percentModal"  
-                                onClick={() => this.onCilick(row.id)}
-                                >Foiz qo'shish <span className="fas fa-plus-circle pl-3"></span></button>
-                                    :
-                                <button type="button" className="btn btn-warning  pl-3 pr-3 text-light" data-toggle="modal" data-target="#userModal"  
-                                disabled>Foiz qo'shish <span className="fas fa-plus-circle pl-3"></span></button>
-                            }
-
-                        </td>
                     </tr>
                 );
             }):''
@@ -92,7 +80,33 @@ export class UserPanel extends Component {
                         </div>
                     </div>
                     <div className="col">
-
+                        <div className="row">
+                            <div className="col-md-4">
+                                <div className="form-check bg-light mt-3 p-1">{
+                                    project.projectMake ? 
+                                    <input type="checkbox" className="form-check-input ml-2" name="active"  checked/> 
+                                    : <input type="checkbox" className="form-check-input ml-2" name="active" onClick={this.onClick} />
+                                }
+                                    
+                                    <span className="ml-4">Active</span>
+                                </div>
+                            </div>
+                            <div className="col-md-8">
+                                <div className="mt-3">
+                                    {this.props.project.document ? 
+                                        <div> 
+                                            <p className="document-area">
+                                            {this.props.project.document}
+                                            </p>
+                                            <button className="btn btn-success edit-btn" data-toggle="modal" data-target="#documentModal" onClick={() => this.editDocument(this.props.project.document)}>Edit Document <span className="fas fa-edit ml-2"></span></button>
+                                        </div>
+                                        :
+                                        <button className="btn btn-success" type="button" data-toggle="modal" data-target="#documentModal"
+                                            >Add Document</button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="row">
@@ -105,7 +119,6 @@ export class UserPanel extends Component {
                             <th >Boshlanish vaqti</th>
                             <th>Tugash vaqti</th>
                             <th>Progrees bar </th>
-                            <th>O'zgarishlar</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -113,15 +126,15 @@ export class UserPanel extends Component {
                         </tbody>
                     </table>
                 </div>     
-                    <CommentModal projectId={project.id} userId={this.state.userid}/>
-                    <PercentModal projectId={project.id} userId={this.state.userid}/>
+                    <DocumentModal projectId={project.id} document={this.state.document}/>
             </div>
         )
     }
 }
 
-UserPanel.propTypes = {
+ProjectManager.propTypes = {
     getProgress : PropTypes.func.isRequired,
+    activeProject : PropTypes.func.isRequired,
     project : PropTypes.object.isRequired,
     token : PropTypes.object.isRequired
 
@@ -132,4 +145,4 @@ const mapStateToPorps = (state) =>({
     token : state.auth.token
 })
 
-export default connect(mapStateToPorps, { getProgress}) (UserPanel)
+export default connect(mapStateToPorps, { getProgress, activeProject}) (ProjectManager)
