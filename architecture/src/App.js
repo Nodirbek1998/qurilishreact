@@ -19,6 +19,10 @@ import GIPproject from './components/pages/GIPProject';
 import AllProject from './components/pages/AllProject';
 import AdminProject from './components/pages/AdminProject';
 import Manager from './components/pages/Manager';
+import ActiveProject from './components/pages/ActiveProjects';
+import FinishedProject from './components/pages/FinishedProject';
+import InProgressProject from './components/pages/InProgressProject';
+
 import ProjectManager  from 'components/pages/ProjectManager';
 
 const token = localStorage.getItem('jwtToken');
@@ -70,6 +74,15 @@ class App extends Component {
             </Switch>
             <Switch>
               <PrivateRoute exact path="/manager-project/:id" component={ProjectManager} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/active-project" component={ActiveProject} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/finished-project" component={FinishedProject} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/inProgress-project" component={InProgressProject} />
             </Switch>
           {/* </PersistGate> */}
         </BrowserRouter>

@@ -82,11 +82,12 @@ export class UserPanel extends Component {
                             </div>
                             <div className="col-md-8">
                                 <div className="mt-3"> 
-                                        <div> 
-                                            <p className="document-area">
-                                            {this.props.project.document}
-                                            </p>
-                                        </div>
+                                    <div> 
+                                        <p className="document-area">
+                                        {this.props.project.document}
+                                        </p>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

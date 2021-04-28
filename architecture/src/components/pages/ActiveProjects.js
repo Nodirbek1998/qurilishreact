@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {getProjects} from '../../actions/ProjectActions'
+import {activesProject} from '../../actions/ProjectActions'
 
 export class Users extends Component {
 
@@ -16,7 +16,7 @@ export class Users extends Component {
         if(this.props.token.role[0].roleName !== 'admin'){
             this.props.history.push("/")
         }else{
-        this.props.getProjects()}
+        this.props.activesProject()}
     }
 
     render() {
@@ -33,7 +33,7 @@ export class Users extends Component {
                         <div className="col">{row.projectFinished}</div>
                         <div className="col">
                             <div className="progress" style={{height:'14px'}}>
-                                <div className={row.projectStatus === 'inProgress' ? 'progress-bar bg-success' : "progress-bar bg-success"} style={{width:`${row.projectPercent}%`}}>
+                                <div className='progress-bar bg-success' style={{width:`${row.projectPercent}%`}}>
                                 {row.projectPercent}%</div>
                             </div>
                         </div>
@@ -43,6 +43,8 @@ export class Users extends Component {
         }
         
         return ( 
+            
+
             <div className="container-fuild">
                 <div className="row user-navbar">
                     <div className="col m-3">
@@ -68,11 +70,11 @@ export class Users extends Component {
 Users.propTypes = {
     token : PropTypes.object.isRequired,
     projects : PropTypes.array.isRequired,
-    getProjects : PropTypes.func.isRequired
+    activesProject : PropTypes.func.isRequired
 }
 
 const mapStateToPorps = (state) =>({
     token : state.auth.token,
     projects : state.ProjectReducer.projects
 })
-export default connect(mapStateToPorps, { getProjects})  (Users)
+export default connect(mapStateToPorps, { activesProject})  (Users)

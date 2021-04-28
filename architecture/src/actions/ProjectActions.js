@@ -17,6 +17,48 @@ export const getProjects = () => async dispatch =>{
         })
     }
 };
+export const activesProject = () => async dispatch =>{
+    try{
+        const res = await client.get("/uz/cas/project/active");
+        dispatch({
+            type: GET_PROJECTS,
+            payload : res.data.body
+        })
+    } catch(error){
+        dispatch({
+            type : GET_ERRORS,
+            payload : error.data
+        })
+    }
+};
+export const inProgressProject = () => async dispatch =>{
+    try{
+        const res = await client.get("/uz/cas/project/inProgress");
+        dispatch({
+            type: GET_PROJECTS,
+            payload : res.data.body
+        })
+    } catch(error){
+        dispatch({
+            type : GET_ERRORS,
+            payload : error.data
+        })
+    }
+};
+export const finishedProject = () => async dispatch =>{
+    try{
+        const res = await client.get("/uz/cas/project/finished");
+        dispatch({
+            type: GET_PROJECTS,
+            payload : res.data.body
+        })
+    } catch(error){
+        dispatch({
+            type : GET_ERRORS,
+            payload : error.data
+        })
+    }
+};
 
 export const createProject = (project) => async dispatch =>{
     try{
