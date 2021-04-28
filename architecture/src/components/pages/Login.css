@@ -163,3 +163,6 @@ nav{
     left: -240px;
     top: 70px;
 }
+.display-none{
+    display: unset;
+}

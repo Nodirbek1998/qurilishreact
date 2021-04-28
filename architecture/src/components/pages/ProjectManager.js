@@ -17,15 +17,17 @@ export class ProjectManager extends Component {
     }
 
     componentDidMount(){
-        if(this.props.token.role[0].roleName !== 'projectControl'){
-            this.props.history.push("/")
-        }else{
-        const id = this.props.match.params.id;
-        console.log(id);
-        const percent = {
-            projectId : id
-        }
-        this.props.getProgress(percent)}
+        setInterval(() =>{
+            if(this.props.token.role[0].roleName !== 'projectControl'){
+                this.props.history.push("/")
+            }else{
+            const id = this.props.match.params.id;
+            const percent = {
+                projectId : id
+            }
+            this.props.getProgress(percent)}
+        }, 2000)
+        
     }
 
     onClick(){

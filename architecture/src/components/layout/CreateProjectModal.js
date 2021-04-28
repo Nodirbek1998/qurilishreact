@@ -87,16 +87,15 @@ export class Modal extends Component {
     render() {
 
         const users = this.props.users;
-        console.log(users);
         return (
             <div className="modal" id="creatProjectModal">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="create-project">
-                            <div className="row m-5">
+                            <div className="row m-5 text-center display-none">
                                 <h4 className="loyiha-boshqaruvi">Loyihalar Boshqaruvi</h4>
                             </div>
-                            <form className="m-5 w-100">
+                            <form className="m-5 w-100 text-center">
                                 <div className="row w-100">
                                     <input
                                         className="projectName"

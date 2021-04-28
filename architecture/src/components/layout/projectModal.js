@@ -29,6 +29,7 @@ function generateUserId(selectOption) {
     return options;
 }
 
+
 export class Modal extends Component {
     constructor() {
         super();
@@ -79,23 +80,27 @@ export class Modal extends Component {
             projectName: this.state.projectName,
             projectCreated: this.state.projectCreat,
             projectFinished: this.state.projectFinish,
-            projectManager: this.state.projectController.value,
+            projectManager: this.state.projectController.id === undefined ? this.state.projectController.value : this.state.projectController.id,
             usersList: generateUserId(this.state.selectOption),
         };
         this.props.editProject(this.state.id, project);
+        
     }
 
-    componentWillReceiveProps(newProps) {
+    componentWillReceiveProps(newProps) { console.log(newProps)
         this.setState({
             id: newProps.project.id,
             projectName: newProps.project.projectName,
             projectCreat: newProps.project.projectCreated,
             projectFinish: newProps.project.projectFinished,
+            projectController : newProps.project.projectManager,
+            selectOption : generateUser(newProps.project.usersList)
         });
+        
     }
 
     render() {
-        console.log(this.props.project);
+        console.log(this.state);
 
         const { project } = this.props;
 

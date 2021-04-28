@@ -18,10 +18,12 @@ class Derictor extends Component {
         this.deleteProject = this.deleteProject.bind(this)
     }
     componentDidMount(){
-        if(this.props.token.role[0].roleName !== 'admin'){
-            this.props.history.push("/")
-        }else{
-        this.props.getProjects();}
+        setInterval(() =>{
+            if(this.props.token.role[0].roleName !== 'admin'){
+                this.props.history.push("/")
+            }else{
+            this.props.getProjects();}
+        }, 2000)
     }
 
     onClick(row){
@@ -43,7 +45,6 @@ class Derictor extends Component {
 
         let count = 0;
         let tablebody;
-        console.log(this.props.projects)
         if(this.props.projects.length > 0){
             tablebody = this.props.projects.map((row) => { count = count + 1
                 return (

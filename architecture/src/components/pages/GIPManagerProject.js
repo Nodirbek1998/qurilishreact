@@ -92,7 +92,27 @@ export class UserPanel extends Component {
                         </div>
                     </div>
                     <div className="col">
-
+                        <div className="row">
+                            <div className="col-md-4">
+                                <div className="form-check bg-light mt-3 p-1">{
+                                    project.projectMake ? 
+                                    <input type="checkbox" className="form-check-input ml-2" name="active"  checked disabled/> 
+                                    : <input type="checkbox" className="form-check-input ml-2" name="active" disabled />
+                                }
+                                    
+                                    <span className="ml-4">Active</span>
+                                </div>
+                            </div>
+                            <div className="col-md-8">
+                                <div className="mt-3"> 
+                                        <div> 
+                                            <p className="document-area">
+                                            {this.props.project.document}
+                                            </p>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="row">

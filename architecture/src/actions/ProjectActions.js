@@ -20,7 +20,7 @@ export const getProjects = () => async dispatch =>{
 
 export const createProject = (project) => async dispatch =>{
     try{
-        const res = await client.post("/uz/cas/project", project); console.log(res)
+        const res = await client.post("/uz/cas/project", project); 
         dispatch({
             type: GET_MESSAGE,
             payload : res.data.body
@@ -34,7 +34,7 @@ export const createProject = (project) => async dispatch =>{
 };
 export const deleteProject = (id) => async dispatch =>{
     try{
-        const res = await client.delete(`/uz/cas/project/${id}`); console.log(res)
+        const res = await client.delete(`/uz/cas/project/${id}`);
         dispatch({
             type: GET_MESSAGE,
             payload : res.data.body
@@ -47,7 +47,7 @@ export const deleteProject = (id) => async dispatch =>{
     }
 };
 
-export const editProject = (id, project) => async dispatch =>{ console.log(id, project)
+export const editProject = (id, project) => async dispatch =>{ 
     try{
         const res = await client.put(`/uz/cas/project/${id}`, project); 
         dispatch({
