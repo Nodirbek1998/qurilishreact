@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {getProjectusername} from '../../actions/ProjectActions'
+import {logout} from '../../actions/AuthActions'
 
 export class Users extends Component {
 
@@ -10,6 +11,25 @@ export class Users extends Component {
         super();
         this.state={
         }
+    }
+    logout = () => {
+        this.props.logout();
+        window.location.href = "/";
+    };
+    
+    signInChecking(auth){
+        if (auth.validToken) {
+            return (
+                <Link className="nav-link bg-red text-white" onClick={this.logout} to="logout">
+                    Logout
+                </Link>
+            )
+        }
+        return (
+            <Link className="nav-link text-white" to="/login">
+                Login
+            </Link>
+        )
     }
 
     componentDidMount(){
@@ -42,11 +62,11 @@ export class Users extends Component {
 
             <div className="container-fuild">
                 <div className="row user-navbar">
-                    <div className="col m-3">
+                    <div className="col-md-10 mt-3">
                         <h3 className="text-light">Projects </h3>
                     </div>
-                    <div className="col">
-
+                    <div className="col-md-2  mt-3">
+                    {this.signInChecking(this.props.auth)}
                     </div>
                 </div>
                 <div className="row bg-light p-4">
@@ -67,6 +87,7 @@ Users.propTypes = {
 
 const mapStateToPorps = (state) =>({
     token : state.auth.token,
-    projects : state.ProjectReducer.projects
+    projects : state.ProjectReducer.projects,
+    auth : state.auth
 })
-export default connect(mapStateToPorps, { getProjectusername})  (Users)
+export default connect(mapStateToPorps, { getProjectusername, logout})  (Users)

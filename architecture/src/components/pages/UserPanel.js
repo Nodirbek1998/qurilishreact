@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import {getProgress} from '../../actions/ProgreesActions'
 import CommentModal from '../layout/CommentModal'
 import PercentModal from '../layout/PercentModal'
+import {Link} from 'react-router-dom'
 
 export class UserPanel extends Component {
     constructor() {
@@ -85,7 +86,9 @@ export class UserPanel extends Component {
             <div className="container-fuild">
                 <div className="row user-navbar">
                     <div className="col m-3">
-                        <p className="text-light">Loyiha nomi : {this.props.project.projectName}</p>
+                        <p className="text-light">
+                        <Link to="/users" className=" pl-3 pr-3 p-2 mr-5"><span className="fas fa-sign-in-alt text-light"></span></Link>
+                        Loyiha nomi : {this.props.project.projectName}</p>
                         <div className="progress" style={{height:'24px'}}>
                             <div className="progress-bar bg-warning" style={{width:`${this.props.project.projectPercent}%`}}>
                             {this.props.project.projectPercent}%</div>

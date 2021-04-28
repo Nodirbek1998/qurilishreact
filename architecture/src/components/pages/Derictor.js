@@ -5,6 +5,7 @@ import {getProjects, deleteProject} from '../../actions/ProjectActions'
 import ProjectModal from '../layout/projectModal'
 import {Link} from 'react-router-dom'
 import CreatProjectModal from '../layout/CreateProjectModal'
+import {logout} from '../../actions/AuthActions'
 
 
 
@@ -17,6 +18,27 @@ class Derictor extends Component {
         }
         this.deleteProject = this.deleteProject.bind(this)
     }
+
+    logout = () => {
+        this.props.logout();
+        window.location.href = "/";
+    };
+    
+    signInChecking(auth){
+        if (auth.validToken) {
+            return (
+                <Link className="nav-link bg-red text-dark " onClick={this.logout} to="logout">
+                    Logout
+                </Link>
+            )
+        }
+        return (
+            <Link className="nav-link text-white" to="/login">
+                Login
+            </Link>
+        )
+    }
+
     componentDidMount(){
         setInterval(() =>{
             if(this.props.token.role[0].roleName !== 'admin'){
@@ -82,8 +104,9 @@ class Derictor extends Component {
                             <li className="nav-item">
                                 <button className="btn btn-light ml-5" type="button" data-toggle="modal" data-target="#creatProjectModal"
                                     onClick={() => this.projectStateClear()}>Yangi loyiha qo'shish 
-                                    <span className="fas fa-plus-circle"></span></button>
+                                    <span className="fas fa-plus-circle pl-3"></span></button>
                             </li>
+                            <li className="bg-light ml-3 btn p-0">{this.signInChecking(this.props.auth)}</li>
                         </ul>
                     </nav>
                 </div>
@@ -122,8 +145,9 @@ Derictor.propTypes ={
 
 const mapStateToPorps = (state) =>({
     projects : state.ProjectReducer.projects,
-    token : state.auth.token
+    token : state.auth.token,
+    auth : state.auth
 });
 
 
-export default connect(mapStateToPorps, {getProjects, deleteProject}) (Derictor)
+export default connect(mapStateToPorps, {getProjects, deleteProject, logout}) (Derictor)

@@ -45,10 +45,12 @@ export class Users extends Component {
         return ( 
             <div className="container-fuild">
                 <div className="row user-navbar">
-                    <div className="col m-3">
-                        <h3 className="text-light">Projects </h3>
+                    <div className="col-md-7 mt-3 mb-3">
+                        <h3 className="text-light">
+                        <Link to="/derictor" className=" pl-3 pr-3 p-2 mr-5"><span className="fas fa-sign-in-alt text-light"></span></Link>
+                        Projects </h3>
                     </div>
-                    <div className="col">
+                    <div className="col-md-5">
                         <Link to="/allProject" className="btn bg-light text-dark pl-3 pr-3 mr-4 mt-3">Barchasi</Link>
                         <Link to="/active-project" className="btn bg-light text-dark pl-3 pr-3 mr-4 mt-3">active</Link>
                         <Link to="/finished-project" className="btn bg-light text-dark pl-3 pr-3 mr-4 mt-3">Vaqti tugagan</Link>

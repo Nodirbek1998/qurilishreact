@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {getProgress} from '../../actions/ProgreesActions'
 import GipProjectModal from '../layout/GIPProjectModal'
+import {Link} from 'react-router-dom'
 
 export class UserPanel extends Component {
     constructor() {
@@ -67,13 +68,13 @@ export class UserPanel extends Component {
                             </div>
                         </td>
                         <td>
-                            {row.progresses.length >  0 && project.project_make? 
+                            {row.progresses.length > 0 && project.projectMake ? 
                             <button className="btn btn-danger mr-5 pl-3 pr-3 text-light" data-toggle="modal" data-target="#gipProjectModal"
                             onClick={() => this.onCilick(row)}>Tasdiqlash 
                             </button>
                             :
                             <button className="btn btn-danger mr-5 pl-3 pr-3 text-light" data-toggle="modal" data-target="#gipProjectModal"
-                                onClick={() => this.onCilick(row)} disabled>Tasdiqlash 
+                            disabled>Tasdiqlash 
                             </button>
                             }
                         </td>
@@ -85,6 +86,7 @@ export class UserPanel extends Component {
             <div className="container-fuild">
                 <div className="row user-navbar">
                     <div className="col m-3">
+                    <Link to="/gipProject" className=" pl-3 pr-3 p-2 mr-5"><span className="fas fa-sign-in-alt text-light"></span></Link>
                         <p className="text-light">Loyiha nomi : {this.props.project.projectName}</p>
                         <div className="progress" style={{height:'24px'}}>
                             <div className="progress-bar bg-warning" style={{width:`${this.props.project.projectPercent}%`}}>
