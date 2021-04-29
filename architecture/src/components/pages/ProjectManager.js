@@ -45,6 +45,7 @@ export class ProjectManager extends Component {
             document : document
         })
     }
+
     render() {
         let count = 0;
         let tablebody;
@@ -90,7 +91,8 @@ export class ProjectManager extends Component {
                         <Link to="/manager" className=" pl-3 pr-3 p-2 mr-5"><span className="fas fa-sign-in-alt text-light"></span></Link>
                         Loyiha nomi : {this.props.project.projectName}</p>
                         <div className="progress" style={{height:'24px'}}>
-                            <div className="progress-bar bg-warning" style={{width:`${this.props.project.projectPercent}%`}}>
+                            <div className={this.props.project.projectPercent > 50 ? "progress-bar bg-success" : "progress-bar bg-warning"}
+                            style={{width:`${this.props.project.projectPercent}%`}}>
                             {this.props.project.projectPercent}%</div>
                         </div>
                     </div>

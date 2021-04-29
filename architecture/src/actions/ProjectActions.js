@@ -1,5 +1,5 @@
 
-import { GET_ERRORS, GET_MESSAGE, GET_PROJECTS } from './Types';
+import { GET_ERRORS, GET_MESSAGE, GET_PROJECTS, GET_PROJECT_ACTIVE, GET_PROJECT_FINISHED, GET_PROJECT_INPROGRESS } from './Types';
 import client from 'services/api';
 
 
@@ -21,7 +21,7 @@ export const activesProject = () => async dispatch =>{
     try{
         const res = await client.get("/uz/cas/project/active");
         dispatch({
-            type: GET_PROJECTS,
+            type: GET_PROJECT_ACTIVE,
             payload : res.data.body
         })
     } catch(error){
@@ -35,7 +35,7 @@ export const inProgressProject = () => async dispatch =>{
     try{
         const res = await client.get("/uz/cas/project/inProgress");
         dispatch({
-            type: GET_PROJECTS,
+            type: GET_PROJECT_INPROGRESS,
             payload : res.data.body
         })
     } catch(error){
@@ -49,7 +49,7 @@ export const finishedProject = () => async dispatch =>{
     try{
         const res = await client.get("/uz/cas/project/finished");
         dispatch({
-            type: GET_PROJECTS,
+            type: GET_PROJECT_FINISHED,
             payload : res.data.body
         })
     } catch(error){

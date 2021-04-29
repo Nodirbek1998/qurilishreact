@@ -29,6 +29,12 @@ export class Admin extends Component {
             this.props.history.push("/")
         }else{
         this.props.getUsers();}
+        setInterval(() =>{
+            if(this.props.token.role[0].roleName !== 'admin'){
+                this.props.history.push("/")
+            }else{
+                this.props.getUsers();}
+        }, 2000)
     }
     
     deleteUser(id){
@@ -58,9 +64,9 @@ export class Admin extends Component {
                         <td>{row.username}</td>
                         <td>{row.hiddenPassword}</td>
                         <td>
-                            <button className="btn btn-danger p-1 pl-3 mr-3 pr-3 text-light" onClick={() => this.deleteUser(row.id)}>O'chirish 
+                            <button className="btn btn-warning p-1 pl-3 mr-3 pr-3 text-light" onClick={() => this.deleteUser(row.id)}>O'chirish 
                             <span className="fas fa-user-times pl-3"></span></button>
-                            <button type="button" className="btn btn-warning p-1 pl-3 pr-3 text-light" data-toggle="modal" data-target="#userModal"  
+                            <button type="button" className="btn btn-success p-1 pl-3 pr-3 text-light" data-toggle="modal" data-target="#userModal"  
                             onClick={() => this.onClick(row)}>O'zgartirish <span className="fas fa-edit pl-2"></span></button>
                         </td>
                     </tr>

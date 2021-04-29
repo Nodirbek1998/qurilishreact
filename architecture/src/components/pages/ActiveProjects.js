@@ -77,6 +77,6 @@ Users.propTypes = {
 
 const mapStateToPorps = (state) =>({
     token : state.auth.token,
-    projects : state.ProjectReducer.projects
+    projects : state.ProjectReducer.project_active
 })
 export default connect(mapStateToPorps, { activesProject})  (Users)

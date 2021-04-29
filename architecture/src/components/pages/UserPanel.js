@@ -20,11 +20,22 @@ export class UserPanel extends Component {
         if(this.props.token.role[0].roleName !== 'user'){
             this.props.history.push("/")
         }else{
-        const id = this.props.match.params.id;
-        const percent = {
-            projectId : id
-        }
-        this.props.getProgress(percent)}
+            const id = this.props.match.params.id;
+            const percent = {
+                projectId : id
+            }
+            this.props.getProgress(percent)
+        };
+        setInterval(() =>{
+            if(this.props.token.role[0].roleName !== 'user'){
+                this.props.history.push("/")
+            }else{
+                const id = this.props.match.params.id;
+                const percent = {
+                    projectId : id
+                }
+                this.props.getProgress(percent)}
+        }, 4000)
     }
 
     onCilick(id){
@@ -61,19 +72,19 @@ export class UserPanel extends Component {
                         </td>
                         <td>
                             {row.username === this.props.token.username && project.projectMake?
-                                <button className="btn btn-danger mr-5 pl-3 pr-3 text-light" data-toggle="modal" data-target="#commentModal"
+                                <button className="btn btn-warning mr-5 pl-3 pr-3 text-light" data-toggle="modal" data-target="#commentModal"
                                 onClick = {() => this.onCilick(row.id)}>Izoh 
                                 <span className="fas fa-edit ml-2"></span></button> 
                                     : 
-                                <button className="btn btn-danger mr-5 pl-3 pr-3 text-light" disabled>Izoh 
+                                <button className="btn btn-warning mr-5 pl-3 pr-3 text-light" disabled>Izoh 
                                 <span className="fas fa-edit pl-3"></span></button>
                             }
                             {row.username === this.props.token.username && project.projectMake ?
-                                <button type="button" className="btn btn-warning  pl-3 pr-3 text-light" data-toggle="modal" data-target="#percentModal"  
+                                <button type="button" className="btn btn-success  pl-3 pr-3 text-light" data-toggle="modal" data-target="#percentModal"  
                                 onClick={() => this.onCilick(row.id)}
                                 >Foiz qo'shish <span className="fas fa-plus-circle pl-3"></span></button>
                                     :
-                                <button type="button" className="btn btn-warning  pl-3 pr-3 text-light" data-toggle="modal" data-target="#userModal"  
+                                <button type="button" className="btn btn-success  pl-3 pr-3 text-light" data-toggle="modal" data-target="#userModal"  
                                 disabled>Foiz qo'shish <span className="fas fa-plus-circle pl-3"></span></button>
                             }
                         </td>

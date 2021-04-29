@@ -67,11 +67,11 @@ export class UserPanel extends Component {
                         </td>
                         <td>
                             {row.progresses.length > 0 && project.projectMake ? 
-                            <button className="btn btn-danger mr-5 pl-3 pr-3 text-light" data-toggle="modal" data-target="#gipProjectModal"
+                            <button className="btn btn-warning mr-5 pl-3 pr-3 text-light" data-toggle="modal" data-target="#gipProjectModal"
                             onClick={() => this.onCilick(row)}>Tasdiqlash 
                             </button>
                             :
-                            <button className="btn btn-danger mr-5 pl-3 pr-3 text-light" data-toggle="modal" data-target="#gipProjectModal"
+                            <button className="btn btn-success mr-5 pl-3 pr-3 text-light" data-toggle="modal" data-target="#gipProjectModal"
                             disabled>Tasdiqlash 
                             </button>
                             }

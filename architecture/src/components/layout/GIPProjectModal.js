@@ -34,7 +34,7 @@ export class CommentModal extends Component {
                             <span>{item.percent}</span>
                         </div>
                         <button className="btn btn-success pt-2 pb-2" type="button" data-dismiss="modal"  onClick={() => this.onSubmit(item.id)}>Tasdiqlash</button>
-                        <button className="btn btn-danger pt-2 pb-2" type="button" data-dismiss="modal"  onClick={() => this.deleteProgress(item.id)}>O'chirish</button>
+                        <button className="btn btn-warning pt-2 pb-2 pl-5" type="button" data-dismiss="modal"  onClick={() => this.deleteProgress(item.id)}>O'chirish</button>
                     </form>
                 )
             })
