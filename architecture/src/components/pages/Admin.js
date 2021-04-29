@@ -25,7 +25,6 @@ export class Admin extends Component {
     }
 
     componentDidMount(){
-        console.log(this.props.token.role[0].roleName)
         if(this.props.token.role[0].roleName !== 'admin'){
             this.props.history.push("/")
         }else{

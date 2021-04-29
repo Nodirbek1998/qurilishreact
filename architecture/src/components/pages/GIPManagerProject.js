@@ -24,7 +24,7 @@ export class UserPanel extends Component {
                 projectId : id
             }
             this.props.getProgress(percent)}
-        }, 4000)
+        }, 1000 * 60)
         
     }
 

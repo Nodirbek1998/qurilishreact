@@ -104,11 +104,11 @@ export class UserPanel extends Component {
                             <div className="col-md-4">
                                 <div className="form-check bg-light mt-3 p-1">{
                                     project.projectMake ? 
-                                    <input type="checkbox" className=" ml-2"   checked disabled/> 
-                                    : <input type="checkbox" className=" ml-2" disabled />
+                                    <input type="checkbox" className=" ml-1"   checked disabled/> 
+                                    : <input type="checkbox" className=" ml-1" disabled />
                                 }
                                     
-                                    <span className="ml-4">Ishga tushish</span>
+                                    <span className="ml-1">Ishga tushish</span>
                                 </div>
                             </div>
                             <div className="col-md-8">
