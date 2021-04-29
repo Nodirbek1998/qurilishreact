@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const client = axios.create({
-  baseURL: "https://architecture-manager-web.herokuapp.com/",
+  // baseURL: "https://architecture-manager-web.herokuapp.com/",
+  baseURL: "http://localhost:8080/",
   headers: {
     Accept: "*/*",
     "Content-Type": "application/json",
