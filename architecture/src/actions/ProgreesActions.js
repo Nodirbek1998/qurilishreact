@@ -44,3 +44,17 @@ export const pushPercent = (id) => async dispatch =>{
         })
     }   
 }; 
+export const deleteProgress = (id) => async dispatch =>{ 
+    try{
+        const res = await client.delete(`/uz/cas/progress/${id}`);
+        dispatch({
+            type : GET_MESSAGE,
+            payload : res.data.body
+        })
+    }catch(error){
+        dispatch({
+            type : GET_ERRORS,
+            payload : error.data
+        })
+    }   
+}; 

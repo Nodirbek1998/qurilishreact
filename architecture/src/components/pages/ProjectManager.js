@@ -35,6 +35,14 @@ export class ProjectManager extends Component {
         this.props.activeProject(this.props.match.params.id)
     }
 
+    componentWillReceiveProps(newProps){
+        if(newProps.message !== undefined){
+            return(
+                alert(newProps.message)
+            )
+        }
+    }
+
     editDocument(document){
         this.setState({
             document : document
@@ -74,6 +82,11 @@ export class ProjectManager extends Component {
         }
         return (
             <div className="container-fuild">
+                {this.props.message !== undefined ? 
+                    <div class="alert alert-success alert-dismissible w-50">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {this.props.message}
+                    </div> : ''}
                 <div className="row user-navbar">
                     <div className="col m-3">
                         <p className="text-light">
@@ -93,7 +106,7 @@ export class ProjectManager extends Component {
                                     : <input type="checkbox" className="form-check-input ml-2" name="active" onClick={this.onClick} />
                                 }
                                     
-                                    <span className="ml-4">Active</span>
+                                    <span className="ml-4">Ishga tushish</span>
                                 </div>
                             </div>
                             <div className="col-md-8">
@@ -103,11 +116,11 @@ export class ProjectManager extends Component {
                                             <p className="document-area">
                                             {this.props.project.document}
                                             </p>
-                                            <button className="btn btn-success edit-btn" data-toggle="modal" data-target="#documentModal" onClick={() => this.editDocument(this.props.project.document)}>Edit Document <span className="fas fa-edit ml-2"></span></button>
+                                            <button className="btn btn-success edit-btn" data-toggle="modal" data-target="#documentModal" onClick={() => this.editDocument(this.props.project.document)}>Hujjatni o'zgartirish<span className="fas fa-edit ml-2"></span></button>
                                         </div>
                                         :
                                         <button className="btn btn-success" type="button" data-toggle="modal" data-target="#documentModal"
-                                            >Add Document</button>
+                                            >Hujjatni kiritish</button>
                                     }
                                 </div>
                             </div>
@@ -141,13 +154,15 @@ ProjectManager.propTypes = {
     getProgress : PropTypes.func.isRequired,
     activeProject : PropTypes.func.isRequired,
     project : PropTypes.object.isRequired,
-    token : PropTypes.object.isRequired
+    token : PropTypes.object.isRequired,
+    message : PropTypes.string.isRequired
 
 }
 
 const mapStateToPorps = (state) =>({
     project : state.ProgressReducer.projectProgress,
-    token : state.auth.token
+    token : state.auth.token,
+    message : state.MessageReducer.message
 })
 
 export default connect(mapStateToPorps, { getProgress, activeProject}) (ProjectManager)

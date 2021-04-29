@@ -66,7 +66,7 @@ export class Users extends Component {
             <div className="container-fuild">
                 <div className="row user-navbar">
                     <div className="col-md-10 mt-3 mb-2">
-                        <h3 className="text-light">Projects </h3>
+                        <h3 className="text-light">Loyihalar </h3>
                     </div>
                     <div className="col-md-2 mt-3">
                         {this.signInChecking(this.props.auth)}

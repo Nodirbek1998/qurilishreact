@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {pushPercent} from '../../actions/ProgreesActions'
+import {pushPercent, deleteProgress} from '../../actions/ProgreesActions'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
@@ -16,6 +16,9 @@ export class CommentModal extends Component {
     onSubmit(id){
         this.props.pushPercent(id)
     }
+    deleteProgress(id){
+        this.props.deleteProgress(id)
+    }
 
     render() {
         const user = this.props.user;
@@ -31,6 +34,7 @@ export class CommentModal extends Component {
                             <span>{item.percent}</span>
                         </div>
                         <button className="btn btn-success pt-2 pb-2" type="button" data-dismiss="modal"  onClick={() => this.onSubmit(item.id)}>Tasdiqlash</button>
+                        <button className="btn btn-danger pt-2 pb-2" type="button" data-dismiss="modal"  onClick={() => this.deleteProgress(item.id)}>O'chirish</button>
                     </form>
                 )
             })
@@ -43,7 +47,7 @@ export class CommentModal extends Component {
                             {row}
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-danger" data-dismiss="modal">Yopish</button>
                         </div>
                         
                     </div>
@@ -54,7 +58,8 @@ export class CommentModal extends Component {
 }
 
 CommentModal.propTypes = {
-    pushPercent : PropTypes.func.isRequired
+    pushPercent : PropTypes.func.isRequired,
+    deleteProgress : PropTypes.func.isRequired
 }
 
-export default connect(null, {pushPercent}) (CommentModal)
+export default connect(null, {pushPercent, deleteProgress}) (CommentModal)

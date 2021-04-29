@@ -20,7 +20,7 @@ export class Users extends Component {
     signInChecking(auth){
         if (auth.validToken) {
             return (
-                <Link className="nav-link bg-red text-white" onClick={this.logout} to="logout">
+                <Link className="nav-link bg-light text-dark btn " onClick={this.logout} to="logout">
                     Logout
                 </Link>
             )
@@ -62,10 +62,12 @@ export class Users extends Component {
 
             <div className="container-fuild">
                 <div className="row user-navbar">
-                    <div className="col-md-10 mt-3">
-                        <h3 className="text-light">Projects </h3>
+                    <div className="col-md-10 mt-3 mb-2">
+                        <h3 className="text-light">
+                        <Link to="/gipProject" className=" pl-3 pr-3 p-2 mr-5"><span className="fas fa-sign-in-alt text-light"></span></Link>
+                        Loyihalar </h3>
                     </div>
-                    <div className="col-md-2  mt-3">
+                    <div className="col-md-2 btn  mt-3">
                     {this.signInChecking(this.props.auth)}
                     </div>
                 </div>

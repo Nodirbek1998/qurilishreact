@@ -141,7 +141,7 @@ export class Modal extends Component {
                                         data-dismiss="modal"
                                         onClick={this.onSubmit}
                                     >
-                                        Ro'yhatdan o'tqazish
+                                        Loyiha yaratish
                                     </button>
                             </form>
                         </div>
@@ -151,7 +151,7 @@ export class Modal extends Component {
                                 className="btn btn-danger"
                                 data-dismiss="modal"
                             >
-                                Close
+                                yopish
                             </button>
                         </div>
                     </div>

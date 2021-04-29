@@ -79,10 +79,10 @@ class Derictor extends Component {
                         })}</td>
                         <td style={{width:"150px"}}><p>{row.projectCreated}</p> <p>{row.projectFinished}</p></td>
                         <td>
-                            <button className="btn btn-danger p-1 pl-3 mr-3 pr-3 text-light" onClick={() => this.deleteProject(row.id)}>Delete 
+                            <button className="btn btn-danger p-1 pl-3 mr-3 pr-3 text-light" onClick={() => this.deleteProject(row.id)}>O'chirish 
                             <span className="fas fa-trash ml-3"></span></button>
                             <button type="button" className="btn btn-warning p-1 pl-3 pr-3 text-light" data-toggle="modal" data-target="#editProjectModal"  
-                            onClick={() => this.onClick(row)}>Edit <span className="fas fa-edit ml-2"></span></button>
+                            onClick={() => this.onClick(row)}>O'zgartirish <span className="fas fa-edit ml-2"></span></button>
                         </td>
                     </tr>
                 );
@@ -93,6 +93,11 @@ class Derictor extends Component {
 
         return (
             <div className="container-fuild">
+                {this.props.message !== undefined ? 
+                    <div class="alert alert-success alert-dismissible w-50">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {this.props.message}
+                    </div> : ''}
                 <div className="row derictor-navbar">
                     <nav className="navbar navbar-expand-md p-3">
                         <div className="navbar-brand ml-4" >Derictor F.I.O oynasi</div>
@@ -139,14 +144,16 @@ class Derictor extends Component {
 Derictor.propTypes ={
     getProjects : PropTypes.func.isRequired,
     deleteProject : PropTypes.func.isRequired,
-    projects : PropTypes.array.isRequired
+    projects : PropTypes.array.isRequired,
+    message : PropTypes.string.isRequired
 
 }
 
 const mapStateToPorps = (state) =>({
     projects : state.ProjectReducer.projects,
     token : state.auth.token,
-    auth : state.auth
+    auth : state.auth,
+    message : state.MessageReducer.message
 });
 
 

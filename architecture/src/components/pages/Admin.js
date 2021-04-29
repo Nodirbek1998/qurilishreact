@@ -59,10 +59,10 @@ export class Admin extends Component {
                         <td>{row.username}</td>
                         <td>{row.hiddenPassword}</td>
                         <td>
-                            <button className="btn btn-danger p-1 pl-3 mr-3 pr-3 text-light" onClick={() => this.deleteUser(row.id)}>Delete 
+                            <button className="btn btn-danger p-1 pl-3 mr-3 pr-3 text-light" onClick={() => this.deleteUser(row.id)}>O'chirish 
                             <span className="fas fa-user-times pl-3"></span></button>
                             <button type="button" className="btn btn-warning p-1 pl-3 pr-3 text-light" data-toggle="modal" data-target="#userModal"  
-                            onClick={() => this.onClick(row)}>Edit <span className="fas fa-edit pl-2"></span></button>
+                            onClick={() => this.onClick(row)}>O'zgartirish <span className="fas fa-edit pl-2"></span></button>
                         </td>
                     </tr>
                 );
@@ -72,6 +72,11 @@ export class Admin extends Component {
         return (
             
             <div className="container-fuild">
+                {this.props.message !== undefined ? 
+                    <div class="alert alert-success alert-dismissible w-50">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {this.props.message}
+                    </div> : ''}
                 <div className="row derictor-navbar">
                 <nav className="navbar navbar-expand-md p-3">
                     <p className="text-light ml-5 mt-2" >
@@ -116,13 +121,15 @@ export class Admin extends Component {
 Admin.propTypes = {
     getUsers : PropTypes.func.isRequired,
     users : PropTypes.array.isRequired,
-    user : PropTypes.object.isRequired
+    user : PropTypes.object.isRequired,
+    message : PropTypes.string.isRequired
 }
 
 const mapStateToPorps = (state) =>({
     users : state.UsersReducer.users,
     user : state.UsersReducer.user,
-    token : state.auth.token
+    token : state.auth.token,
+    message : state.MessageReducer.message
 })
 
 export default connect(mapStateToPorps, {getUsers, deleteUser, getUser, editUser}) (Admin)

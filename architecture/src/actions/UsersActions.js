@@ -66,7 +66,7 @@ export const deleteUser = (id, history) => async dispatch => {
         const res = await client.delete(`/uz/cas/user/${id}`);
         dispatch({
             type : GET_MESSAGE,
-            payload : res.data
+            payload : res.data.body
         });
         history.push("/admin")
     }catch(error){

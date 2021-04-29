@@ -78,11 +78,11 @@ export class Modal extends Component {
                                     <input required name="password" type="password" onChange={this.onChange}  placeholder="password" 
                                     defaultValue={this.state.password} className="form-control required error"/>
                                 </div>
-                                <button className="btn btn-success pl-5 pr-5 pt-2 pb-2" type="button" data-dismiss="modal"  onClick={this.onSubmit}>Ro'yhatdan o'tqazish</button>
+                                <button className="btn btn-success pl-5 pr-5 pt-2 pb-2" type="button" data-dismiss="modal"  onClick={this.onSubmit}>O'zgartirish</button>
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-danger" data-dismiss="modal">Yopish</button>
                         </div>
                         
                     </div>

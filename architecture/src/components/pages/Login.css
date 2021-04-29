@@ -166,3 +166,12 @@ nav{
 .display-none{
     display: unset;
 }
+
+.alert-dismissible{
+    margin-left: 400px ;
+    position: absolute;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 1;
+}

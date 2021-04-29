@@ -15,26 +15,19 @@ export class UserPanel extends Component {
     }
 
     componentDidMount(){
-        const id = this.props.match.params.id;
         setInterval(() =>{
+            if(this.props.token.role[0].roleName !== 'gip'){
+                this.props.history.push("/")
+            }else{
+            const id = this.props.match.params.id;
             const percent = {
                 projectId : id
             }
-            this.props.getProgress(percent)
+            this.props.getProgress(percent)}
         }, 4000)
         
     }
 
-    componentWillMount(){
-        if(this.props.token.role[0].roleName !== 'gip'){
-            this.props.history.push("/")
-        }else{
-        const id = this.props.match.params.id;
-        const percent = {
-            projectId : id
-        }
-        this.props.getProgress(percent)}
-    }
 
     onCilick(user){
         this.setState({user : user})
@@ -84,6 +77,11 @@ export class UserPanel extends Component {
         }
         return (
             <div className="container-fuild">
+                {this.props.message !== undefined ? 
+                    <div class="alert alert-success alert-dismissible w-50">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {this.props.message}
+                    </div> : ''}
                 <div className="row user-navbar">
                     <div className="col m-3">
                     <Link to="/gipProject" className=" pl-3 pr-3 p-2 mr-5"><span className="fas fa-sign-in-alt text-light"></span></Link>
@@ -102,7 +100,7 @@ export class UserPanel extends Component {
                                     : <input type="checkbox" className="form-check-input ml-2" name="active" disabled />
                                 }
                                     
-                                    <span className="ml-4">Active</span>
+                                    <span className="ml-4">Ishga tushish</span>
                                 </div>
                             </div>
                             <div className="col-md-8">
@@ -144,13 +142,15 @@ export class UserPanel extends Component {
 UserPanel.propTypes = {
     getProgress : PropTypes.func.isRequired,
     project : PropTypes.object.isRequired,
-    token : PropTypes.object.isRequired
+    token : PropTypes.object.isRequired,
+    message : PropTypes.string.isRequired
 
 }
 
 const mapStateToPorps = (state) =>({
     project : state.ProgressReducer.projectProgress,
-    token : state.auth.token
+    token : state.auth.token,
+    message : state.MessageReducer.message
 })
 
 export default connect(mapStateToPorps, { getProgress}) (UserPanel)

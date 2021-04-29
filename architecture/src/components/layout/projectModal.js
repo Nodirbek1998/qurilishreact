@@ -177,7 +177,7 @@ export class Modal extends Component {
                                 className="btn btn-danger"
                                 data-dismiss="modal"
                             >
-                                Close
+                                Yopish
                             </button>
                         </div>
                     </div>

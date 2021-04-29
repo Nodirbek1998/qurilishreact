@@ -10,7 +10,8 @@ export class UserPanel extends Component {
     constructor() {
         super();  
         this.state = {
-            userid : ''
+            userid : '',
+            message : ''
         }
         this.onCilick = this.onCilick.bind(this);
     }
@@ -34,7 +35,6 @@ export class UserPanel extends Component {
         let count = 0;
         let tablebody;
         const project = this.props.project;
-        console.log(project)
         if(project.usersList !== undefined){
             tablebody =Array.isArray(project.usersList)?project.usersList.map((row) => { count = count + 1
                 return (
@@ -76,14 +76,19 @@ export class UserPanel extends Component {
                                 <button type="button" className="btn btn-warning  pl-3 pr-3 text-light" data-toggle="modal" data-target="#userModal"  
                                 disabled>Foiz qo'shish <span className="fas fa-plus-circle pl-3"></span></button>
                             }
-
                         </td>
                     </tr>
                 );
             }):''
         }
         return (
+            
             <div className="container-fuild">
+                {this.props.message !== undefined ? 
+                    <div class="alert alert-success alert-dismissible w-50">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {this.props.message}
+                    </div> : ''}
                 <div className="row user-navbar">
                     <div className="col m-3">
                         <p className="text-light">
@@ -99,11 +104,11 @@ export class UserPanel extends Component {
                             <div className="col-md-4">
                                 <div className="form-check bg-light mt-3 p-1">{
                                     project.projectMake ? 
-                                    <input type="checkbox" className="form-check-input ml-2" name="active"  checked disabled/> 
-                                    : <input type="checkbox" className="form-check-input ml-2" name="active" disabled />
+                                    <input type="checkbox" className=" ml-2"   checked disabled/> 
+                                    : <input type="checkbox" className=" ml-2" disabled />
                                 }
                                     
-                                    <span className="ml-4">Active</span>
+                                    <span className="ml-4">Ishga tushish</span>
                                 </div>
                             </div>
                             <div className="col-md-8">
@@ -146,13 +151,15 @@ export class UserPanel extends Component {
 UserPanel.propTypes = {
     getProgress : PropTypes.func.isRequired,
     project : PropTypes.object.isRequired,
-    token : PropTypes.object.isRequired
+    token : PropTypes.object.isRequired,
+    message : PropTypes.object.isRequired
 
 }
 
 const mapStateToPorps = (state) =>({
     project : state.ProgressReducer.projectProgress,
-    token : state.auth.token
+    token : state.auth.token,
+    message : state.MessageReducer.message
 })
 
 export default connect(mapStateToPorps, { getProgress}) (UserPanel)
