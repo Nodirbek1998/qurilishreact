@@ -18,6 +18,11 @@ export class ProjectManager extends Component {
     }
 
     componentDidMount(){
+        const id = this.props.match.params.id;
+            const percent = {
+                projectId : id
+            }
+            this.props.getProgress(percent)
         setInterval(() =>{
             if(this.props.token.role[0].roleName !== 'projectControl'){
                 this.props.history.push("/")
@@ -27,20 +32,12 @@ export class ProjectManager extends Component {
                 projectId : id
             }
             this.props.getProgress(percent)}
-        }, 2000)
+        }, 10000)
         
     }
 
     onClick(){
         this.props.activeProject(this.props.match.params.id)
-    }
-
-    componentWillReceiveProps(newProps){
-        if(newProps.message !== undefined){
-            return(
-                alert(newProps.message)
-            )
-        }
     }
 
     editDocument(document){

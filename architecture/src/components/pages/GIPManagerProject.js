@@ -15,6 +15,11 @@ export class UserPanel extends Component {
     }
 
     componentDidMount(){
+        const id = this.props.match.params.id;
+        const percent = {
+            projectId : id
+        }
+        this.props.getProgress(percent);
         setInterval(() =>{
             if(this.props.token.role[0].roleName !== 'gip'){
                 this.props.history.push("/")
@@ -24,7 +29,7 @@ export class UserPanel extends Component {
                 projectId : id
             }
             this.props.getProgress(percent)}
-        }, 1000 * 60)
+        }, 1000 * 60 )
         
     }
 
