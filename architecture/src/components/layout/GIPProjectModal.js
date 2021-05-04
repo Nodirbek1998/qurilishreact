@@ -14,7 +14,11 @@ export class CommentModal extends Component {
     }
 
     onSubmit(id){
-        this.props.pushPercent(id)
+        const progress = {
+            projectId :this.props.projectId,
+            userId : this.props.user.id
+        }
+        this.props.pushPercent(id, progress)
     }
     deleteProgress(id){
         this.props.deleteProgress(id)
@@ -22,6 +26,7 @@ export class CommentModal extends Component {
 
     render() {
         const user = this.props.user;
+        
         let row;
         if(user.progresses !== undefined){ 
             row = user.progresses.map(item =>{
@@ -31,10 +36,10 @@ export class CommentModal extends Component {
                             <h4 className="loyiha-boshqaruvi" style={{marginLeft:'200px'}}>Loyihalar Boshqaruvi</h4>
                         </div>
                         <div className="row text-center" style={{marginLeft:'200px'}}>
-                            <span>{item.percent}</span>
+                            <span className="ml-5">{item.percent}</span>
                         </div>
                         <button className="btn btn-success pt-2 pb-2" type="button" data-dismiss="modal"  onClick={() => this.onSubmit(item.id)}>Tasdiqlash</button>
-                        <button className="btn btn-warning pt-2 pb-2 pl-5" type="button" data-dismiss="modal"  onClick={() => this.deleteProgress(item.id)}>O'chirish</button>
+                        <button className="btn btn-warning pt-2 pb-2 ml-5" type="button" data-dismiss="modal"  onClick={() => this.deleteProgress(item.id)}>O'chirish</button>
                     </form>
                 )
             })

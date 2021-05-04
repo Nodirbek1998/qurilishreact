@@ -23,16 +23,16 @@ export class ProjectManager extends Component {
                 projectId : id
             }
             this.props.getProgress(percent)
-        setInterval(() =>{
-            if(this.props.token.role[0].roleName !== 'projectControl'){
-                this.props.history.push("/")
-            }else{
-            const id = this.props.match.params.id;
-            const percent = {
-                projectId : id
-            }
-            this.props.getProgress(percent)}
-        }, 10000)
+        // setInterval(() =>{
+        //     if(this.props.token.role[0].roleName !== 'projectControl'){
+        //         this.props.history.push("/")
+        //     }else{
+        //     const id = this.props.match.params.id;
+        //     const percent = {
+        //         projectId : id
+        //     }
+        //     this.props.getProgress(percent)}
+        // }, 10000)
         
     }
 
@@ -57,9 +57,16 @@ export class ProjectManager extends Component {
                         <td>{count}</td>
                         <td>{row.name}</td>
                         <td>
-                            {row.comment !== undefined ? 
+                            {row.comment.length > 0 ? 
                             <p className="user-comment">
-                            {row.comment}
+                            {row.comment.map(item =>{
+                                return(
+                                    <div>
+                                        <p className="p-0 m-0 bg-success text-light mb-2 mt-2">{item.createdAt}</p>
+                                        <p className="p-0 m-0">{item.comment}</p>
+                                    </div>
+                                )
+                            })}
                             </p>
                             :
                             <div>Commentariya yo`q</div>
@@ -77,6 +84,19 @@ export class ProjectManager extends Component {
                     </tr>
                 );
             }):''
+        }
+        let comment ;
+        if (project.proRectorComment !== undefined) {
+            comment = Array.isArray(project.proRectorComment) ? project.proRectorComment.map(Item => {
+                return(
+                    <div>
+                        <p className="p-0 m-0 bg-success text-light mb-2 mt-2">{Item.createdAt}</p>
+                        <p className="p-0 m-0">{Item.comment}</p>
+                    </div>
+                )
+            })
+            :
+            <div></div>
         }
         return (
             <div className="container-fuild">
@@ -115,7 +135,7 @@ export class ProjectManager extends Component {
                                             <p className="document-area">
                                             {this.props.project.document}
                                             </p>
-                                            <button className="btn btn-success edit-btn" data-toggle="modal" data-target="#documentModal" onClick={() => this.editDocument(this.props.project.document)}>Hujjatni o'zgartirish<span className="fas fa-edit ml-2"></span></button>
+                                            <button className="btn btn-success edit-btn ml-4"  data-toggle="modal" data-target="#documentModal" onClick={() => this.editDocument(this.props.project.document)}>Hujjatni o'zgartirish<span className="fas fa-edit ml-2"></span></button>
                                         </div>
                                         :
                                         <button className="btn btn-success" type="button" data-toggle="modal" data-target="#documentModal"
@@ -126,6 +146,17 @@ export class ProjectManager extends Component {
                         </div>
                     </div>
                 </div>
+                <div className="row m-4">
+                    <div className="col-md-4 mt-4 proRector-ism">
+                        {project.proRector !== undefined ? project.proRector.firstName : ""} 
+                        {project.proRector !== undefined ? project.proRector.lastName : ""}
+                    </div>
+                        <div className="col-md-8">
+                            <div className="proRector">
+                                {comment}
+                            </div>
+                        </div>
+                    </div>
                 <div className="row">
                     <table className="table table-striped table-hover">
                         <thead className="thead-dark">
@@ -143,7 +174,7 @@ export class ProjectManager extends Component {
                         </tbody>
                     </table>
                 </div>     
-                    <DocumentModal projectId={project.id} document={this.state.document}/>
+                    <DocumentModal projectId={this.props.match.params.id} document={this.state.document}/>
             </div>
         )
     }

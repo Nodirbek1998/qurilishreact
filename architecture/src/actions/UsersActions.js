@@ -1,5 +1,5 @@
 
-import { GET_ERRORS, GET_USER, GET_USERS, GET_MESSAGE } from "../actions/Types";
+import { GET_ERRORS, GET_USER, GET_USERS, GET_MESSAGE, GET_GIP_USERS } from "../actions/Types";
 import client from 'services/api';
 export const getUsers = () => async dispatch =>{
     try{
@@ -19,7 +19,7 @@ export const getUsermap = () => async dispatch =>{
     try{ 
         const users = await client.get("/uz/cas/user/map"); 
         dispatch({
-            type : GET_USERS,
+            type : GET_GIP_USERS,
             payload : users.data.body
         })
     } catch(error) {

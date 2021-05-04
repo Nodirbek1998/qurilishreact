@@ -27,6 +27,7 @@ export class DocumentModal extends Component {
             comment : this.state.document,
             projectId : this.props.projectId
         }
+        console.log(comment)
         this.props.addDocument(comment)
     }
 
@@ -44,7 +45,7 @@ export class DocumentModal extends Component {
                                     <textarea name="document" type="text" onChange={this.onChange} placeholder="Hujjatlar" 
                                     className="w-100 m-5" style={{minHeight:"150px"}} required defaultValue={this.props.document}/>
                                 </div>
-                                <button className="btn btn-success pl-5 pr-5 pt-2 pb-2" type="button" data-dismiss="modal"  onClick={this.onSubmit}>Hujjatlarni kiritish</button>
+                                <button className="btn btn-success pl-5 pr-5 pt-2 pb-2" type="button" data-dismiss="modal"  onClick={() => this.onSubmit()}>Hujjatlarni kiritish</button>
                             </form>
                         </div>
                         <div className="modal-footer">

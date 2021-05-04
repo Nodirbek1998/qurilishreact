@@ -15,20 +15,25 @@ export class UserPanel extends Component {
     }
 
     componentDidMount(){
-        const id = this.props.match.params.id;
-        const percent = {
-            projectId : id
-        }
-        this.props.getProgress(percent);
-        setInterval(() =>{
-            if(this.props.token.role[0].roleName !== 'gip'){
-                this.props.history.push("/")
-            }else{
+        if(this.props.token.role[0].roleName === 'gip' || this.props.token.role[0].roleName === 'gip1'
+                || this.props.token.role[0].roleName === 'gip2'){                
             const id = this.props.match.params.id;
             const percent = {
                 projectId : id
             }
-            this.props.getProgress(percent)}
+            this.props.getProgress(percent)
+            }else{
+                this.props.history.push("/")}
+        setInterval(() =>{
+            if(this.props.token.role[0].roleName === 'gip' || this.props.token.role[0].roleName === 'gip1'
+                || this.props.token.role[0].roleName === 'gip2'){                
+            const id = this.props.match.params.id;
+            const percent = {
+                projectId : id
+            }
+            this.props.getProgress(percent)
+            }else{
+                this.props.history.push("/")}
         }, 1000 * 60 )
         
     }
@@ -49,9 +54,16 @@ export class UserPanel extends Component {
                         <td>{count}</td>
                         <td>{row.name}</td>
                         <td>
-                            {row.comment !== undefined ? 
+                            {row.comment.length > 0 ? 
                             <p className="user-comment">
-                            {row.comment}
+                            {row.comment.map(item =>{
+                                return(
+                                    <div>
+                                        <p className="p-0 m-0 bg-success text-light mb-2 mt-2">{item.createdAt}</p>
+                                        <p className="p-0 m-0">{item.comment}</p>
+                                    </div>
+                                )
+                            })}
                             </p>
                             :
                             <div>Commentariya yo`q</div>
@@ -80,6 +92,19 @@ export class UserPanel extends Component {
                 );
             }):''
         }
+        let comment ;
+        if (project.proRectorComment !== undefined) {
+            comment = Array.isArray(project.proRectorComment) ? project.proRectorComment.map(Item => {
+                return(
+                    <div>
+                        <p className="p-0 m-0 bg-success text-light mb-2 mt-2">{Item.createdAt}</p>
+                        <p className="p-0 m-0">{Item.comment}</p>
+                    </div>
+                )
+            })
+            :
+            <div></div>
+        }
         return (
             <div className="container-fuild">
                 {this.props.message !== undefined ? 
@@ -89,7 +114,7 @@ export class UserPanel extends Component {
                     </div> : ''}
                 <div className="row user-navbar">
                     <div className="col m-3">
-                    <Link to="/gipProject" className=" pl-3 pr-3 p-2 mr-5"><span className="fas fa-sign-in-alt text-light"></span></Link>
+                    <Link to={this.props.token.role[0].roleName === "proRector"? "/gipProject" : "/allProject"} className=" pl-3 pr-3 p-2 mr-5"><span className="fas fa-sign-in-alt text-light"></span></Link>
                         <p className="text-light">Loyiha nomi : {this.props.project.projectName}</p>
                         <div className="progress" style={{height:'24px'}}>
                             <div className="progress-bar bg-warning" style={{width:`${this.props.project.projectPercent}%`}}>
@@ -120,6 +145,17 @@ export class UserPanel extends Component {
                         </div>
                     </div>
                 </div>
+                <div className="row m-4">
+                    <div className="col-md-4 mt-4 proRector-ism">
+                        {project.proRector !== undefined ? project.proRector.firstName : ""} 
+                        {project.proRector !== undefined ? project.proRector.lastName : ""}
+                    </div>
+                        <div className="col-md-8">
+                            <div className="proRector">
+                                {comment}
+                            </div>
+                        </div>
+                    </div>
                 <div className="row">
                     <table className="table table-striped table-hover">
                         <thead className="thead-dark">
@@ -137,7 +173,7 @@ export class UserPanel extends Component {
                             {tablebody}
                         </tbody>
                     </table>
-                    <GipProjectModal user = {this.state.user}/>
+                    <GipProjectModal user = {this.state.user} projectId = {this.props.match.params.id}/>
                 </div>     
             </div>
         )

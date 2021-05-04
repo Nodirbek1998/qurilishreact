@@ -17,17 +17,14 @@ export class CommentModal extends Component {
     
 
     onChange(e){
-        console.log(e.target.name)
         this.setState({ [e.target.name] : e.target.value});
         
     }
 
     onSubmit(){
-        console.log(this.props.userId, this.props.projectId);
         const comment = {
             comment : this.state.comment,
-            projectId : this.props.projectId,
-            userId : this.props.userId
+            projectId : this.props.projectId
         }
         this.props.addProgress(comment)
     }

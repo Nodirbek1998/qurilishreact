@@ -1,11 +1,12 @@
-import { GET_PROJECTS, GET_PROJECT, GET_PROJECT_ACTIVE, GET_PROJECT_FINISHED, GET_PROJECT_INPROGRESS} from "../actions/Types";
+import { GET_PROJECTS, GET_PROJECT, GET_PROJECT_ACTIVE, GET_PROJECT_FINISHED, GET_PROJECT_INPROGRESS, GET_GIP_PROJECT} from "../actions/Types";
 
 const initialState = {
     projects: [],
     project : {},
     project_inProgress : [],
     project_finished : [],
-    project_active : []
+    project_active : [],
+    gip_project : []
     };
     export default function foo(state = initialState, action) {
     switch (action.type) {
@@ -18,6 +19,11 @@ const initialState = {
         return {
             ...state,
             project_active : action.payload
+        };
+        case GET_GIP_PROJECT:
+        return {
+            ...state,
+            gip_project : action.payload
         };
         case GET_PROJECT_FINISHED:
         return {

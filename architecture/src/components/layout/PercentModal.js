@@ -43,7 +43,7 @@ export class CommentModal extends Component {
                                     <input name="percent" type="number" onChange={this.onChange} placeholder="Commentariya" 
                                     className="w-50" required/>
                                 </div>
-                                <button className="btn btn-success pl-5 pr-5 pt-2 pb-2" type="button" data-dismiss="modal"  onClick={this.onSubmit}>Yuborish</button>
+                                <button className="btn btn-success pl-5 pr-5 pt-2 pb-2 mr-5" type="button" data-dismiss="modal"  onClick={this.onSubmit}>Yuborish</button>
                             </form>
                         </div>
                         <div className="modal-footer">

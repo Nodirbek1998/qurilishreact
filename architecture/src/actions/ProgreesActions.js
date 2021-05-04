@@ -30,9 +30,9 @@ export const addPercent = (percent) => async dispatch =>{
         })
     }   
 }; 
-export const pushPercent = (id) => async dispatch =>{ 
+export const pushPercent = (id, progress) => async dispatch =>{ 
     try{
-        const res = await client.get(`/uz/cas/progress/add/${id}`);
+        const res = await client.post(`/uz/cas/progress/add/${id}`, progress);
         dispatch({
             type : GET_MESSAGE,
             payload : res.data.body

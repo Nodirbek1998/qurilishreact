@@ -22,6 +22,9 @@ import Manager from './components/pages/Manager';
 import ActiveProject from './components/pages/ActiveProjects';
 import FinishedProject from './components/pages/FinishedProject';
 import InProgressProject from './components/pages/InProgressProject';
+import ProRector from './components/pages/ProRector';
+import ProRectorProjects from './components/pages/ProRectorProjects';
+import ProRectorManager from './components/pages/ProRectorManager'
 
 import ProjectManager  from 'components/pages/ProjectManager';
 
@@ -83,6 +86,15 @@ class App extends Component {
             </Switch>
             <Switch>
               <PrivateRoute exact path="/inProgress-project" component={InProgressProject} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/proRector" component={ProRector} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/proRector-all-projects" component={ProRectorProjects} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/proRector-project-manager/:id" component={ProRectorManager} />
             </Switch>
           {/* </PersistGate> */}
         </BrowserRouter>

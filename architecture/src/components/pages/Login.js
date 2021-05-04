@@ -33,9 +33,12 @@ class Login extends Component {
         if (newProps.auth.validToken) {
             switch(newProps.auth.token.role[0].roleName){
                 case "admin" :  newProps.history.push("/derictor");   break;
-                case "gip" :  newProps.history.push("/gipProject"); break;
                 case "user" :  newProps.history.push("/users"); break;
                 case "projectControl" :  newProps.history.push("/manager"); break;
+                case "gip"  : newProps.history.push("/gipProject"); break;
+                case "gip1"  : newProps.history.push("/gipProject"); break;
+                case "gip2"  : newProps.history.push("/gipProject"); break;
+                case "proRector"  : newProps.history.push("/proRector"); break;
                 default : newProps.history.push("/")
             }
         }

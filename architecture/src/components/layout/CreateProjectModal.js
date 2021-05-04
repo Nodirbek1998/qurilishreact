@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Select from "react-select";
-import { getUsers } from "../../actions/UsersActions";
+import { getUsers, getUsermap } from "../../actions/UsersActions";
 import { DatePicker } from "antd";
 import {
     createProject,
@@ -55,6 +55,7 @@ export class Modal extends Component {
 
     componentDidMount() {
         this.props.getUsers();
+        this.props.getUsermap();
     }
 
     onChange(e) {
@@ -87,6 +88,7 @@ export class Modal extends Component {
     render() {
 
         const users = this.props.users;
+        const gipUser = this.props.gipUser
         return (
             <div className="modal" id="creatProjectModal">
                 <div className="modal-dialog">
@@ -109,7 +111,7 @@ export class Modal extends Component {
                                 <Select
                                     className="w-100"
                                     onChange={this.heandleChanged}
-                                    options={generateUser(users)}
+                                    options={generateUser(gipUser)}
                                     placeholder="Loyiha boshqaruvchisi"
                                     required
                                 />
@@ -165,15 +167,19 @@ Modal.propTypes = {
     createProject: PropTypes.func.isRequired,
     getUsers: PropTypes.func.isRequired,
     deleteProject: PropTypes.func.isRequired,
+    getUsermap: PropTypes.func.isRequired,
     users: PropTypes.array.isRequired,
+    gipUser: PropTypes.array.isRequired,
 };
 
 const mapStateToPorps = (state) => ({
     users: state.UsersReducer.users,
+    gipUser: state.UsersReducer.gipUser,
 });
 
 export default connect(mapStateToPorps, {
     createProject,
     getUsers,
     deleteProject,
+    getUsermap
 })(Modal);

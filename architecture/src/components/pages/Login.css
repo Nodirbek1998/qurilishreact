@@ -123,7 +123,6 @@ nav{
 }
 
 .user-comment{
-    max-width: 300px;
     max-height: 100px;
     overflow-y: scroll;
     background-color: white;
@@ -174,4 +173,17 @@ nav{
     font-size: 20px;
     font-weight: bold;
     z-index: 1;
+}
+.proRector{
+    max-width: 780px;
+    font-size: 18px;
+    max-height: 100px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 0 auto;
+    overflow-y: scroll;
+}
+.proRector-ism{
+    font-size: 20px;
 }

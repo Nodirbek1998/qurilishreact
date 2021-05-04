@@ -1,5 +1,5 @@
 
-import { GET_ERRORS, GET_MESSAGE, GET_PROJECTS, GET_PROJECT_ACTIVE, GET_PROJECT_FINISHED, GET_PROJECT_INPROGRESS } from './Types';
+import { GET_ERRORS, GET_GIP_PROJECT, GET_MESSAGE, GET_PROJECTS, GET_PROJECT_ACTIVE, GET_PROJECT_FINISHED, GET_PROJECT_INPROGRESS } from './Types';
 import client from 'services/api';
 
 
@@ -108,6 +108,20 @@ export const getProjectusername = (username) => async dispatch =>{  console.log(
         const res = await client.post(`/uz/cas/project/user`, {"username" : username}); 
         dispatch({
             type: GET_PROJECTS,
+            payload : res.data.body
+        })
+    } catch(error){
+        dispatch({
+            type : GET_ERRORS,
+            payload : error.data
+        })
+    }
+};
+export const getProjectGip = (username) => async dispatch =>{ 
+    try{
+        const res = await client.post(`/uz/cas/project/user/gip`, {"username" : username}); 
+        dispatch({
+            type: GET_GIP_PROJECT,
             payload : res.data.body
         })
     } catch(error){

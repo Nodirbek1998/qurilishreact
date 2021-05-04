@@ -14,10 +14,11 @@ export class Users extends Component {
     }
 
     componentDidMount(){
-        if(this.props.token.role[0].roleName !== 'admin'){
-            this.props.history.push("/")
+        if(this.props.token.role[0].roleName === 'admin' || this.props.token.role[0].roleName === 'proRector'){
+            this.props.getProjects();
         }else{
-        this.props.getProjects()}
+        this.props.history.push("/")
+    }
     }
 
     render() {
@@ -53,10 +54,16 @@ export class Users extends Component {
                         </h3>
                     </div>
                     <div className="col-md-5">
-                        <Link to="/allProject" className="btn bg-light text-dark pl-3 pr-3 mr-4 mt-3">Barchasi</Link>
-                        <Link to="/active-project" className="btn bg-light text-dark pl-3 pr-3 mr-4 mt-3">active</Link>
-                        <Link to="/finished-project" className="btn bg-light text-dark pl-3 pr-3 mr-4 mt-3">Vaqti tugagan</Link>
-                        <Link to="/inProgress-project" className="btn bg-light text-dark pl-3 pr-3 mr-4 mt-3">Tugatilgan</Link>
+                        {this.props.token.role[0].roleName === 'admin' ?
+                            <span>
+                                <Link to="/allProject" className="btn bg-light text-dark pl-3 pr-3 mr-4 mt-3">Barchasi</Link>
+                                <Link to="/active-project" className="btn bg-light text-dark pl-3 pr-3 mr-4 mt-3">active</Link>
+                                <Link to="/finished-project" className="btn bg-light text-dark pl-3 pr-3 mr-4 mt-3">Vaqti tugagan</Link>
+                                <Link to="/inProgress-project" className="btn bg-light text-dark pl-3 pr-3 mr-4 mt-3">Tugatilgan</Link>
+                            </span>
+                            :
+                            <div></div>
+                        }
                     </div> 
                 </div>
                 <div className="row bg-light p-4">

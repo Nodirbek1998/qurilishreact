@@ -87,7 +87,7 @@ export class Modal extends Component {
         
     }
 
-    componentWillReceiveProps(newProps) { console.log(newProps)
+    componentWillReceiveProps(newProps) { 
         this.setState({
             id: newProps.project.id,
             projectName: newProps.project.projectName,
@@ -100,7 +100,6 @@ export class Modal extends Component {
     }
 
     render() {
-        console.log(this.state);
 
         const { project } = this.props;
 
@@ -192,10 +191,12 @@ Modal.propTypes = {
     editProject: PropTypes.func.isRequired,
     deleteProject: PropTypes.func.isRequired,
     users: PropTypes.array.isRequired,
+    gipUser: PropTypes.array.isRequired,
 };
 
 const mapStateToPorps = (state) => ({
     users: state.UsersReducer.users,
+    gipUsers : state.UsersReducer.gipUser
 });
 
 export default connect(mapStateToPorps, {

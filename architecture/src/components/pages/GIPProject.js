@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {getProjectusername} from '../../actions/ProjectActions'
+import {getProjectGip} from '../../actions/ProjectActions'
 import {logout} from '../../actions/AuthActions'
 
 export class Users extends Component {
@@ -33,10 +33,10 @@ export class Users extends Component {
     }
 
     componentDidMount(){
-        if(this.props.token.role[0].roleName !== 'gip'){
-            this.props.history.push("/")
-        }else{
-        this.props.getProjectusername(this.props.token.username)}
+            if(this.props.token.role[0].roleName !== 'gip' && this.props.token.role[0].roleName !== 'gip1' && this.props.token.role[0].roleName !== 'gip2'){
+                this.props.history.push("/")
+            }else{
+            this.props.getProjectGip(this.props.token.username)}
     }
 
     
@@ -64,7 +64,6 @@ export class Users extends Component {
                 <div className="row user-navbar">
                     <div className="col-md-10 mt-3 mb-2">
                         <h3 className="text-light">
-                        <Link to="/gipProject" className=" pl-3 pr-3 p-2 mr-5"><span className="fas fa-sign-in-alt text-light"></span></Link>
                         Loyihalar </h3>
                     </div>
                     <div className="col-md-2 btn  mt-3">
@@ -89,7 +88,7 @@ Users.propTypes = {
 
 const mapStateToPorps = (state) =>({
     token : state.auth.token,
-    projects : state.ProjectReducer.projects,
+    projects : state.ProjectReducer.gip_project,
     auth : state.auth
 })
-export default connect(mapStateToPorps, { getProjectusername, logout})  (Users)
+export default connect(mapStateToPorps, { getProjectGip, logout})  (Users)

@@ -2,44 +2,34 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 import {getProgress} from '../../actions/ProgreesActions'
-import CommentModal from '../layout/CommentModal'
-import PercentModal from '../layout/PercentModal'
 import {Link} from 'react-router-dom'
+import CommentModal from '../layout/CommentModal'
+import {getComentProRector} from '../../actions/CommentActions'
 
 export class UserPanel extends Component {
     constructor() {
         super();  
         this.state = {
-            userid : '',
-            message : ''
+            user : {}
         }
         this.onCilick = this.onCilick.bind(this);
     }
 
     componentDidMount(){
-        if(this.props.token.role[0].roleName !== 'user'){
-            this.props.history.push("/")
+        if(this.props.token.role[0].roleName === 'proRector'){  
+        const id = this.props.match.params.id;
+        const percent = {
+            projectId : id
+        }
+        this.props.getProgress(percent)
+        this.props.getComentProRector(percent)
         }else{
-            const id = this.props.match.params.id;
-            const percent = {
-                projectId : id
-            }
-            this.props.getProgress(percent)
-        };
-        setInterval(() =>{
-            if(this.props.token.role[0].roleName !== 'user'){
-                this.props.history.push("/")
-            }else{
-                const id = this.props.match.params.id;
-                const percent = {
-                    projectId : id
-                }
-                this.props.getProgress(percent)}
-        }, 4000)
+            this.props.history.push("/")
+        }
     }
 
-    onCilick(id){
-        this.setState({userid : id})
+    onCilick(user){
+        this.setState({user : user})
     }
 
     render() {
@@ -47,7 +37,7 @@ export class UserPanel extends Component {
         let tablebody;
         const project = this.props.project;
         if(project.usersList !== undefined){
-            tablebody =Array.isArray(project.usersList)?project.usersList.map((row) => { count = count + 1
+            tablebody =Array.isArray(project.usersList)?project.usersList.map((row) => { count = count + 1; console.log(row.comment)
                 return (
                     <tr key={row.id}>
                         <td>{count}</td>
@@ -67,41 +57,22 @@ export class UserPanel extends Component {
                             :
                             <div>Commentariya yo`q</div>
                             }
-                            
                         </td>
                         <td>{project.projectCreated}</td>
                         <td>{project.projectFinished}</td>
                         <td style={{maxWidth:'100px'}}>
-                            <div className="progress" style={{height:'20px'}}>
+                            <div className="progress" style={{height:'14px'}}>
                                 <div className="progress-bar bg-success" style={{width:`${row.userPercent}%`}}>
                                 {row.userPercent}%</div>
                             </div>
-                        </td>
-                        <td>
-                            {row.username === this.props.token.username && project.projectMake?
-                                <button className="btn btn-warning mr-5 pl-3 pr-3 text-light" data-toggle="modal" data-target="#commentModal"
-                                onClick = {() => this.onCilick(row.id)}>Izoh 
-                                <span className="fas fa-edit ml-2"></span></button> 
-                                    : 
-                                <button className="btn btn-warning mr-5 pl-3 pr-3 text-light" disabled>Izoh 
-                                <span className="fas fa-edit pl-3"></span></button>
-                            }
-                            {row.username === this.props.token.username && project.projectMake ?
-                                <button type="button" className="btn btn-success  pl-3 pr-3 text-light" data-toggle="modal" data-target="#percentModal"  
-                                onClick={() => this.onCilick(row.id)}
-                                >Foiz qo'shish <span className="fas fa-plus-circle pl-3"></span></button>
-                                    :
-                                <button type="button" className="btn btn-success  pl-3 pr-3 text-light" data-toggle="modal" data-target="#userModal"  
-                                disabled>Foiz qo'shish <span className="fas fa-plus-circle pl-3"></span></button>
-                            }
                         </td>
                     </tr>
                 );
             }):''
         }
         let comment ;
-        if (project.proRectorComment !== undefined) {
-            comment = Array.isArray(project.proRectorComment) ? project.proRectorComment.map(Item => {
+        if (this.props.comments.length > 0) {
+            comment = Array.isArray(this.props.comments) ? this.props.comments.map(Item => {
                 return(
                     <div>
                         <p className="p-0 m-0 bg-success text-light mb-2 mt-2">{Item.createdAt}</p>
@@ -113,19 +84,13 @@ export class UserPanel extends Component {
             <div></div>
         }
         return (
-
             <div className="container-fuild">
-                {this.props.message !== undefined ? 
-                    <div class="alert alert-success alert-dismissible w-50">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        {this.props.message}
-                    </div> : ''}
                 <div className="row user-navbar">
                     <div className="col m-3">
                         <p className="text-light">
-                        <Link to="/users" className=" pl-3 pr-3 p-2 mr-5"><span className="fas fa-sign-in-alt text-light"></span></Link>
+                        <Link to="/allProject" className=" pl-3 pr-3 p-2 mr-5"><span className="fas fa-sign-in-alt text-light"></span></Link>
                         Loyiha nomi : {this.props.project.projectName}</p>
-                        <div className="progress" style={{height:'30px'}}>
+                        <div className="progress" style={{height:'24px'}}>
                             <div className="progress-bar bg-warning" style={{width:`${this.props.project.projectPercent}%`}}>
                             {this.props.project.projectPercent}%</div>
                         </div>
@@ -135,36 +100,35 @@ export class UserPanel extends Component {
                             <div className="col-md-4">
                                 <div className="form-check bg-light mt-3 p-1">{
                                     project.projectMake ? 
-                                    <input type="checkbox" className=" ml-1"   checked disabled/> 
-                                    : <input type="checkbox" className=" ml-1" disabled />
+                                    <input type="checkbox" className="form-check-input ml-2" name="active"  checked disabled/> 
+                                    : <input type="checkbox" className="form-check-input ml-2" name="active" disabled />
                                 }
-                                    
-                                    <span className="ml-1">Ishga tushish</span>
+                                    <span className="ml-4">Ishga tushish</span>
                                 </div>
                             </div>
                             <div className="col-md-8">
                                 <div className="mt-3"> 
-                                        <div> 
-                                            <p className="document-area">
-                                            {this.props.project.document}
-                                            </p>
-                                        </div>
+                                    <div> 
+                                        <p className="document-area">
+                                        {this.props.project.document}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="row m-4">
-                    <div className="col-md-4 mt-4 proRector-ism">
-                        {project.proRector !== undefined ? project.proRector.firstName : ""} 
-                        {project.proRector !== undefined ? project.proRector.lastName : ""}
-                    </div>
+                    <div className="row m-4">
                         <div className="col-md-8">
-                            <div className="proRector">
+                            <div className="proRector p-1">
                                 {comment}
                             </div>
                         </div>
+                        <div className="col-md-4">
+                            <button type="button" data-toggle="modal" data-target="#commentModal" className="btn btn-success mr-5 pl-3 pr-3 text-light">Malumot kiritish</button>
+                        </div>
                     </div>
+                    <CommentModal projectId = {this.props.match.params.id}/>
                 <div className="row">
                     <table className="table table-striped table-hover">
                         <thead className="thead-dark">
@@ -175,7 +139,6 @@ export class UserPanel extends Component {
                             <th >Boshlanish vaqti</th>
                             <th>Tugash vaqti</th>
                             <th>Progrees bar </th>
-                            <th>O'zgarishlar</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -183,8 +146,6 @@ export class UserPanel extends Component {
                         </tbody>
                     </table>
                 </div>     
-                    <CommentModal projectId={project.id} userId={this.state.userid}/>
-                    <PercentModal projectId={project.id} userId={this.state.userid}/>
             </div>
         )
     }
@@ -192,16 +153,17 @@ export class UserPanel extends Component {
 
 UserPanel.propTypes = {
     getProgress : PropTypes.func.isRequired,
+    getComentProRector : PropTypes.func.isRequired,
     project : PropTypes.object.isRequired,
     token : PropTypes.object.isRequired,
-    message : PropTypes.object.isRequired,
+    comments : PropTypes.array.isRequired
 
 }
 
 const mapStateToPorps = (state) =>({
     project : state.ProgressReducer.projectProgress,
     token : state.auth.token,
-    message : state.MessageReducer.message,
+    comments : state.CommentReducer.proRector
 })
 
-export default connect(mapStateToPorps, { getProgress}) (UserPanel)
+export default connect(mapStateToPorps, { getProgress, getComentProRector}) (UserPanel)

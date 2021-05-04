@@ -7,6 +7,7 @@ import ProjectReducer from './ProjectReducer';
 import ProgressReducer from './ProgressReducer';
 import {persistReducer} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import CommentReducer from './CommentReducer';
 
 const persistConfig = {
     key : 'root',
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
     UsersReducer,
     MessageReducer,
     ProjectReducer,
-    ProgressReducer
+    ProgressReducer,
+    CommentReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);
