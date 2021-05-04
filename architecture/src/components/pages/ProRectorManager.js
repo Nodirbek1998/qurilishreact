@@ -37,7 +37,7 @@ export class UserPanel extends Component {
         let tablebody;
         const project = this.props.project;
         if(project.usersList !== undefined){
-            tablebody =Array.isArray(project.usersList)?project.usersList.map((row) => { count = count + 1; console.log(row.comment)
+            tablebody =Array.isArray(project.usersList)?project.usersList.map((row) => { count = count + 1; 
                 return (
                     <tr key={row.id}>
                         <td>{count}</td>
@@ -61,7 +61,7 @@ export class UserPanel extends Component {
                         <td>{project.projectCreated}</td>
                         <td>{project.projectFinished}</td>
                         <td style={{maxWidth:'100px'}}>
-                            <div className="progress" style={{height:'14px'}}>
+                            <div className="progress" style={{height:'20px'}}>
                                 <div className="progress-bar bg-success" style={{width:`${row.userPercent}%`}}>
                                 {row.userPercent}%</div>
                             </div>
@@ -90,7 +90,7 @@ export class UserPanel extends Component {
                         <p className="text-light">
                         <Link to="/allProject" className=" pl-3 pr-3 p-2 mr-5"><span className="fas fa-sign-in-alt text-light"></span></Link>
                         Loyiha nomi : {this.props.project.projectName}</p>
-                        <div className="progress" style={{height:'24px'}}>
+                        <div className="progress" style={{height:'30px'}}>
                             <div className="progress-bar bg-warning" style={{width:`${this.props.project.projectPercent}%`}}>
                             {this.props.project.projectPercent}%</div>
                         </div>
