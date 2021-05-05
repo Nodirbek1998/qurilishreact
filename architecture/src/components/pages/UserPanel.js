@@ -156,7 +156,7 @@ export class UserPanel extends Component {
                 </div>
                 <div className="row m-4">
                     <div className="col-md-4 mt-4 proRector-ism">
-                        {project.proRector !== undefined ? project.proRector.firstName : ""} 
+                        {project.proRector !== undefined ? <span>{project.proRector.firstName} </span> : ""} 
                         {project.proRector !== undefined ? project.proRector.lastName : ""}
                     </div>
                         <div className="col-md-8">

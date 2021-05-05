@@ -32,7 +32,7 @@ export class Users extends Component {
                         <div className="col">{row.projectCreated}</div>
                         <div className="col">{row.projectFinished}</div>
                         <div className="col">
-                            <div className="progress" style={{height:'14px'}}>
+                            <div className="progress" style={{height:'20px'}}>
                                 <div className='progress-bar bg-danger' style={{width:`${row.projectPercent}%`}}>
                                 {row.projectPercent}%</div>
                             </div>

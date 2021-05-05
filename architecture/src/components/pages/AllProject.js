@@ -21,6 +21,16 @@ export class Users extends Component {
     }
     }
 
+    status(status){
+        if (status === "active") {
+            return "bg-success"
+        }if (status === "finished") {
+            return "bg-danger"
+        } else {
+            return "bg-warning"
+        }
+    }
+
     render() {
         let count = 0;
         let tablebody;
@@ -34,8 +44,8 @@ export class Users extends Component {
                         <div className="col">{row.projectCreated}</div>
                         <div className="col">{row.projectFinished}</div>
                         <div className="col">
-                            <div className="progress" style={{height:'14px'}}>
-                                <div className={row.projectStatus === 'inProgress' ? 'progress-bar bg-success' : "progress-bar bg-success"} style={{width:`${row.projectPercent}%`}}>
+                            <div className="progress" style={{height:'20px', lineHeight : "18px"}}>
+                                <div className={this.status(row.projectStatus)} style={{width:`${row.projectPercent}%`}}>
                                 {row.projectPercent}%</div>
                             </div>
                         </div>

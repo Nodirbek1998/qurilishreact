@@ -35,15 +35,16 @@ export class CommentModal extends Component {
                 <div className="modal-dialog w-50">
                     <div className="modal-content">     
                         <div className="modal-body">
-                            <form className="m-5 register-form text-center">
+                            <form className="m-5 register-form text-center form-group">
                                 <div className="row">
                                     <h4 className="loyiha-boshqaruvi" style={{marginLeft:'200px'}}>Loyihalar Boshqaruvi</h4>
                                 </div>
                                 <div className="row text-center" style={{marginLeft:'200px'}}>
-                                    <input name="percent" type="number" onChange={this.onChange} placeholder="Commentariya" 
+                                    <input name="percent" type="number" pattern="[0-9]{3}" maxLength={ 2 } title="100 gacha bo'lgan son kiriting"
+                                    onChange={this.onChange}  placeholder="100 dan kichik son kiriting"
                                     className="w-50" required/>
                                 </div>
-                                <button className="btn btn-success pl-5 pr-5 pt-2 pb-2 mr-5" type="button" data-dismiss="modal"  onClick={this.onSubmit}>Yuborish</button>
+                                <button className="btn btn-success pl-5 pr-5 pt-2 pb-2 ml-4" type="button" data-dismiss="modal"  onClick={this.onSubmit}>Yuborish</button>
                             </form>
                         </div>
                         <div className="modal-footer">
