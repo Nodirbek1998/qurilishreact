@@ -125,7 +125,7 @@ export class ProjectManager extends Component {
                                     : <input type="checkbox" className="form-check-input ml-2" name="active" onClick={this.onClick} />
                                 }
                                     
-                                    <span className="ml-4">Ishga tushish</span>
+                                    <span className="ml-4">Ishga tushirish</span>
                                 </div>
                             </div>
                             <div className="col-md-8">

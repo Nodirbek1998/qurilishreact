@@ -63,7 +63,7 @@ export class Manager extends Component {
             <div className="container-fuild">
                 <div className="row user-navbar">
                     <div className="col-md-7 mt-3">
-                        <h3 className="text-light">Projects</h3>
+                        <h3 className="text-light">Loyihalar</h3>
                     </div>
                     <div className="col-md-4 mt-3">
                         <span className="text-light">Kotiba {this.props.token.username} </span>

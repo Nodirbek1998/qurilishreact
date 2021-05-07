@@ -104,7 +104,7 @@ class Derictor extends Component {
                     </div> : ''}
                 <div className="row derictor-navbar">
                     <nav className="navbar navbar-expand-md p-3">
-                        <div className="navbar-brand ml-4" >Derictor F.I.O oynasi</div>
+                        <div className="navbar-brand ml-4" >Derictor {this.props.token.username} oynasi</div>
                         <Link className="ml-5 pl-5 pr-5 btn btn-light" to="/admin">ADMIN</Link>
                         <ul className="navbar-nav">
                             <li className="nav-item">

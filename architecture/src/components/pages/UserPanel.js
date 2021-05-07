@@ -139,7 +139,7 @@ export class UserPanel extends Component {
                                     : <input type="checkbox" className=" ml-1" disabled />
                                 }
                                     
-                                    <span className="ml-1">Ishga tushish</span>
+                                    <span className="ml-1">Ishga tushirish</span>
                                 </div>
                             </div>
                             <div className="col-md-8">

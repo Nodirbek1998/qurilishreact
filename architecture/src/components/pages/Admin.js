@@ -92,7 +92,7 @@ export class Admin extends Component {
                     <li className="nav-item">
                         <Link to="/register">
                             <button className="btn btn-light">
-                                Ro'hatdan o'tkazish <span className="fas fa-plus-circle"></span>
+                                Ro'yhatdan o'tkazish <span className="fas fa-plus-circle"></span>
                             </button>
                         </Link>
                     </li>
