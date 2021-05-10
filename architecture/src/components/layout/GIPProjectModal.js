@@ -35,7 +35,7 @@ export class CommentModal extends Component {
                         <div className="row">
                             <h4 className="loyiha-boshqaruvi" style={{marginLeft:'200px'}}>Loyihalar Boshqaruvi</h4>
                         </div>
-                        <div className="row text-center" style={{marginLeft:'200px'}}>
+                        <div className="row text-center" style={{marginLeft:'200px', fontSize:"20px"}}>
                             <span className="ml-5">{item.percent}</span>
                         </div>
                         <button className="btn btn-success pt-2 pb-2" type="button" data-dismiss="modal"  onClick={() => this.onSubmit(item.id)}>Tasdiqlash</button>
@@ -52,7 +52,7 @@ export class CommentModal extends Component {
                             {row}
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-danger" data-dismiss="modal">Yopish</button>
+                            <button type="button" className="btn btn-warning" data-dismiss="modal">Yopish</button>
                         </div>
                         
                     </div>
