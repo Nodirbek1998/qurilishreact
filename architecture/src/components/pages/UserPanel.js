@@ -45,10 +45,10 @@ export class UserPanel extends Component {
                         <td>
                             {row.comment.length > 0 ? 
                             <p className="user-comment">
-                            {row.comment.map(item =>{
+                            {row.comment.map(item =>{ console.log(item.createdAt)
                                 return(
-                                    <div>
-                                        <p className="p-0 m-0 bg-success text-light mb-2 mt-2">{item.createdAt}</p>
+                                    <div key={item.id}>
+                                        <p className="p-0 m-0 bg-success text-light mb-2 mt-2">{item.createdAt }</p>
                                         <p className="p-0 m-0">{item.comment}</p>
                                     </div>
                                 )
