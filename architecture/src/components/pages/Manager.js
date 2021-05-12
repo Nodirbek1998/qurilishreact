@@ -21,7 +21,7 @@ export class Manager extends Component {
         if (auth.validToken) {
             return (
                 <Link className="nav-link bg-red  btn bg-light" onClick={this.logout} to="logout">
-                    Logout
+                    Chiqish
                 </Link>
             )
         }
@@ -66,7 +66,7 @@ export class Manager extends Component {
                         <h3 className="text-light">Loyihalar</h3>
                     </div>
                     <div className="col-md-4 mt-3">
-                        <span className="text-light">Kotiba {this.props.token.username} </span>
+                        <span className="text-light">Kotiba <span className="text-capitalize">{this.props.token.username}</span> </span>
                     </div>
                     <div className="col-md-1 mt-2">{this.signInChecking(this.props.auth)}</div>
                 </div>

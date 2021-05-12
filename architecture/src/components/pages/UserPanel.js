@@ -65,7 +65,7 @@ export class UserPanel extends Component {
                             })}
                             </p>
                             :
-                            <div>Commentariya yo`q</div>
+                            <div>Izoh yo`q</div>
                             }
                             
                         </td>
@@ -174,7 +174,7 @@ export class UserPanel extends Component {
                             <th>Izohlar</th>
                             <th >Boshlanish vaqti</th>
                             <th>Tugash vaqti</th>
-                            <th>Progrees bar </th>
+                            <th>Ish foizi</th>
                             <th>O'zgarishlar</th>
                         </tr>
                         </thead>

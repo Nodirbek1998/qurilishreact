@@ -119,14 +119,14 @@ export class Modal extends Component {
                                     className=" w-100"
                                     name="projectCreat"
                                     onChange={this.onChangecreat}
-                                    placeholder="Loyiha boshlash vaqti"
+                                    placeholder="Loyihaning boshlanish vaqti"
                                     required
                                 />
                                 <DatePicker
                                     className="w-100 mb-3"
                                     name="projectFinish"
                                     onChange={this.onChangeupdate}
-                                    placeholder="Liyiha tugash vaqti"
+                                    placeholder="Loyiha tugash vaqti"
                                     required
                                 />
                                 <Select
@@ -143,7 +143,7 @@ export class Modal extends Component {
                                         data-dismiss="modal"
                                         onClick={this.onSubmit}
                                     >
-                                        Loyiha yaratish
+                                        Loyihani yaratish
                                     </button>
                             </form>
                         </div>
@@ -153,7 +153,7 @@ export class Modal extends Component {
                                 className="btn btn-warning"
                                 data-dismiss="modal"
                             >
-                                yopish
+                                Yopish
                             </button>
                         </div>
                     </div>

@@ -24,17 +24,6 @@ export class UserPanel extends Component {
             this.props.getProgress(percent)
             }else{
                 this.props.history.push("/")}
-        setInterval(() =>{
-            if(this.props.token.role[0].roleName === 'gip' || this.props.token.role[0].roleName === 'gip1'
-                || this.props.token.role[0].roleName === 'gip2'){                
-            const id = this.props.match.params.id;
-            const percent = {
-                projectId : id
-            }
-            this.props.getProgress(percent)
-            }else{
-                this.props.history.push("/")}
-        }, 1000 * 60 )
         
     }
 
@@ -66,7 +55,7 @@ export class UserPanel extends Component {
                             })}
                             </p>
                             :
-                            <div>Commentariya yo`q</div>
+                            <div>Izoh yo`q</div>
                             }
                         </td>
                         <td>{project.projectCreated}</td>
@@ -123,14 +112,14 @@ export class UserPanel extends Component {
                     </div>
                     <div className="col">
                         <div className="row">
-                            <div className="col-md-4">
+                            <div className="col-md-3">
                                 <div className="form-check bg-light mt-3 p-1">{
                                     project.projectMake ? 
                                     <input type="checkbox" className="form-check-input ml-2" name="active"  checked disabled/> 
                                     : <input type="checkbox" className="form-check-input ml-2" name="active" disabled />
                                 }
                                     
-                                    <span className="ml-4">Ishga tushirish</span>
+                                    <span className="ml-2" style={{fontSize:"14px"}}>Ishga tushirish</span>
                                 </div>
                             </div>
                             <div className="col-md-8">
@@ -165,7 +154,7 @@ export class UserPanel extends Component {
                             <th>Izohlar</th>
                             <th >Boshlanish vaqti</th>
                             <th>Tugash vaqti</th>
-                            <th>Progrees bar </th>
+                            <th>Ish foizi </th>
                             <th>O'zgarishlar</th>
                         </tr>
                         </thead>

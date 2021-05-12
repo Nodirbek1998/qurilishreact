@@ -27,7 +27,6 @@ export class DocumentModal extends Component {
             comment : this.state.document,
             projectId : this.props.projectId
         }
-        console.log(comment)
         this.props.addDocument(comment)
     }
 

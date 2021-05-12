@@ -28,7 +28,7 @@ class ProRector extends Component {
         if (auth.validToken) {
             return (
                 <Link className="nav-link bg-red text-dark " onClick={this.logout} to="logout">
-                    Logout
+                    Chiqish
                 </Link>
             )
         }
@@ -44,12 +44,6 @@ class ProRector extends Component {
             this.props.history.push("/")
         }else{
         this.props.getProjects()};
-        // setInterval(() =>{
-        //     if(this.props.token.role[0].roleName !== 'proRector'){
-        //         this.props.history.push("/")
-        //     }else{
-        //     this.props.getProjects();}
-        // }, 6000)
     }
 
     onClick(row){
@@ -102,7 +96,7 @@ class ProRector extends Component {
                     </div> : ''}
                 <div className="row derictor-navbar">
                     <nav className="navbar navbar-expand-md p-3">
-                        <div className="navbar-brand ml-4" >ProRector {this.props.token.username} oynasi</div>
+                        <div className="navbar-brand ml-4" >ProRector <span className="text-capitalize">{this.props.token.username}</span> oynasi</div>
                         <ul className="navbar-nav">
                         <li className="nav-item">
                             <Link className="ml-5 pl-5 pr-5 btn btn-light" to="/proRector-all-projects">Loyihalarga o'tish</Link>

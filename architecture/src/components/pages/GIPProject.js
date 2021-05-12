@@ -21,7 +21,7 @@ export class Users extends Component {
         if (auth.validToken) {
             return (
                 <Link className="nav-link bg-light text-dark btn " onClick={this.logout} to="logout">
-                    Logout
+                    Chiqish
                 </Link>
             )
         }

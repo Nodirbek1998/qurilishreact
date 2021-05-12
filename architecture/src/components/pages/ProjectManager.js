@@ -23,16 +23,6 @@ export class ProjectManager extends Component {
                 projectId : id
             }
             this.props.getProgress(percent)
-        // setInterval(() =>{
-        //     if(this.props.token.role[0].roleName !== 'projectControl'){
-        //         this.props.history.push("/")
-        //     }else{
-        //     const id = this.props.match.params.id;
-        //     const percent = {
-        //         projectId : id
-        //     }
-        //     this.props.getProgress(percent)}
-        // }, 10000)
         
     }
 
@@ -69,7 +59,7 @@ export class ProjectManager extends Component {
                             })}
                             </p>
                             :
-                            <div>Commentariya yo`q</div>
+                            <div>Izoh yo`q</div>
                             }
                             
                         </td>
@@ -102,7 +92,7 @@ export class ProjectManager extends Component {
             <div className="container-fuild">
                 {this.props.message !== undefined ? 
                     <div class="alert alert-success alert-dismissible w-50">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <button type="button" class="close"  data-dismiss="alert">×</button>
                         {this.props.message}
                     </div> : ''}
                 <div className="row user-navbar">
@@ -118,14 +108,14 @@ export class ProjectManager extends Component {
                     </div>
                     <div className="col">
                         <div className="row">
-                            <div className="col-md-4">
-                                <div className="form-check bg-light mt-3 p-1">{
+                            <div className="col-md-3">
+                                <div className="form-check bg-light mt-3 pt-1 pb-1">{
                                     project.projectMake ? 
-                                    <input type="checkbox" className="form-check-input ml-2" name="active"  checked/> 
-                                    : <input type="checkbox" className="form-check-input ml-2" name="active" onClick={this.onClick} />
+                                    <input type="checkbox" className="form-check-input " name="active"  checked/> 
+                                    : <input type="checkbox" className="form-check-input " name="active" onClick={this.onClick} />
                                 }
                                     
-                                    <span className="ml-4">Ishga tushirish</span>
+                                    <span className="ml-2" style={{fontSize:"14px"}}>Ishga tushirish</span>
                                 </div>
                             </div>
                             <div className="col-md-8">
@@ -135,7 +125,8 @@ export class ProjectManager extends Component {
                                             <p className="document-area">
                                             {this.props.project.document}
                                             </p>
-                                            <button className="btn btn-success edit-btn ml-4"  data-toggle="modal" data-target="#documentModal" onClick={() => this.editDocument(this.props.project.document)}>Hujjatni o'zgartirish<span className="fas fa-edit ml-2"></span></button>
+                                            <button className="btn btn-success edit-btn ml-4"  data-toggle="modal" data-target="#documentModal" onClick={() => this.editDocument(this.props.project.document)}>
+                                                <span className="fas fa-edit ml-2"></span></button>
                                         </div>
                                         :
                                         <button className="btn btn-success" type="button" data-toggle="modal" data-target="#documentModal"
@@ -167,7 +158,7 @@ export class ProjectManager extends Component {
                             <th>Izohlar</th>
                             <th >Boshlanish vaqti</th>
                             <th>Tugash vaqti</th>
-                            <th>Progrees bar </th>
+                            <th>Ish foizi </th>
                         </tr>
                         </thead>
                         <tbody>

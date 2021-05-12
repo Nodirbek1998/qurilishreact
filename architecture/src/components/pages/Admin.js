@@ -34,11 +34,11 @@ export class Admin extends Component {
                 this.props.history.push("/")
             }else{
                 this.props.getUsers();}
-        }, 2000)
+        }, 4000)
     }
     
+    
     deleteUser(id){
-        console.log(id);
         this.props.deleteUser(id, this.props.history);
     }
     
@@ -64,8 +64,15 @@ export class Admin extends Component {
                         <td>{row.username}</td>
                         <td>{row.hiddenPassword}</td>
                         <td>
-                            <button className="btn btn-warning p-1 pl-3 mr-3 pr-3 text-light" onClick={() => this.deleteUser(row.id)}>O'chirish 
+                            {row.roles[0].roleName === "user"  ? 
+                            <button className="btn btn-warning p-1 pl-3 mr-3 pr-3 text-light" onClick={() => this.deleteUser(row.id)}>
+                                O'chirish 
+                            <span className="fas fa-user-times pl-3"></span></button> :
+                            <button className="btn btn-warning p-1 pl-3 mr-3 pr-3 text-light" onClick={() => this.deleteUser(row.id)} disabled>
+                                O'chirish 
                             <span className="fas fa-user-times pl-3"></span></button>
+                            }
+                            
                             <button type="button" className="btn btn-success p-1 pl-3 pr-3 text-light" data-toggle="modal" data-target="#userModal"  
                             onClick={() => this.onClick(row)}>O'zgartirish <span className="fas fa-edit pl-2"></span></button>
                         </td>
@@ -79,7 +86,7 @@ export class Admin extends Component {
             <div className="container-fuild">
                 {this.props.message !== undefined ? 
                     <div class="alert alert-success alert-dismissible w-50">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <button type="button" class="close"   data-dismiss="alert">×</button>
                         {this.props.message}
                     </div> : ''}
                 <div className="row derictor-navbar">

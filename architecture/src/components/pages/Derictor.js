@@ -27,8 +27,8 @@ class Derictor extends Component {
     signInChecking(auth){
         if (auth.validToken) {
             return (
-                <Link className="nav-link bg-red text-dark " onClick={this.logout} to="logout">
-                    Logout
+                <Link className="nav-link text-dark " onClick={this.logout} to="logout">
+                    Chiqish
                 </Link>
             )
         }
@@ -104,7 +104,7 @@ class Derictor extends Component {
                     </div> : ''}
                 <div className="row derictor-navbar">
                     <nav className="navbar navbar-expand-md p-3">
-                        <div className="navbar-brand ml-4" >Derictor {this.props.token.username} oynasi</div>
+                        <div className="navbar-brand ml-4" >Direktor <span className="text-capitalize">{this.props.token.username}</span> oynasi</div>
                         <Link className="ml-5 pl-5 pr-5 btn btn-light" to="/admin">ADMIN</Link>
                         <ul className="navbar-nav">
                             <li className="nav-item">

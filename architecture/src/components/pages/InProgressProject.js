@@ -52,7 +52,7 @@ export class Users extends Component {
                     </div>
                     <div className="col-md-5">
                         <Link to="/allProject" className="btn bg-light text-dark pl-3 pr-3 mr-4 mt-3">Barchasi</Link>
-                        <Link to="/active-project" className="btn bg-light text-dark pl-3 pr-3 mr-4 mt-3">active</Link>
+                        <Link to="/active-project" className="btn bg-light text-dark pl-3 pr-3 mr-4 mt-3">Aktiv</Link>
                         <Link to="/finished-project" className="btn bg-light text-dark pl-3 pr-3 mr-4 mt-3">Vaqti tugagan</Link>
                         <Link to="/inProgress-project" className="btn bg-light text-dark pl-3 pr-3 mr-4 mt-3">Tugatilgan</Link>
                     </div>

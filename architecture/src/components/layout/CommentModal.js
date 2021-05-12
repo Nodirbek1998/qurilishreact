@@ -40,7 +40,7 @@ export class CommentModal extends Component {
                                     <h4 className="loyiha-boshqaruvi">Loyihalar Boshqaruvi</h4>
                                 </div>
                                 <div className="row">
-                                    <textarea name="comment" type="text" onChange={this.onChange} placeholder="Commentariya" 
+                                    <textarea name="comment" type="text" onChange={this.onChange} placeholder="Izoh" 
                                     className="w-100 m-5" style={{minHeight:"150px"}} required/>
                                 </div>
                                 <button className="btn btn-success pl-5 pr-5 pt-2 pb-2" type="button" data-dismiss="modal"  onClick={this.onSubmit}>Yuborish</button>

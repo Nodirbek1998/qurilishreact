@@ -55,7 +55,7 @@ export class UserPanel extends Component {
                             })}
                             </p>
                             :
-                            <div>Commentariya yo`q</div>
+                            <div>Izoh yo`q</div>
                             }
                         </td>
                         <td>{project.projectCreated}</td>
@@ -103,7 +103,7 @@ export class UserPanel extends Component {
                                     <input type="checkbox" className="form-check-input ml-2" name="active"  checked disabled/> 
                                     : <input type="checkbox" className="form-check-input ml-2" name="active" disabled />
                                 }
-                                    <span className="ml-4">Ishga tushirish</span>
+                                    <span className="ml-4" style={{fontSize:"14px"}}>Ishga tushirish</span>
                                 </div>
                             </div>
                             <div className="col-md-8">
@@ -138,7 +138,7 @@ export class UserPanel extends Component {
                             <th>Izohlar</th>
                             <th >Boshlanish vaqti</th>
                             <th>Tugash vaqti</th>
-                            <th>Progrees bar </th>
+                            <th>Ish foizi </th>
                         </tr>
                         </thead>
                         <tbody>

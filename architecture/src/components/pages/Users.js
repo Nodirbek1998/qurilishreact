@@ -22,7 +22,7 @@ export class Users extends Component {
         if (auth.validToken) {
             return (
                 <Link className="nav-link bg-red  btn bg-light" onClick={this.logout} to="logout">
-                    Logout
+                    Chiqish
                 </Link>
             )
         }

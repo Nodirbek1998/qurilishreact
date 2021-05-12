@@ -59,15 +59,15 @@ export class Modal extends Component {
                                     <h4 className="loyiha-boshqaruvi">Loyihalar Boshqaruvi</h4>
                                 </div>
                                 <div className="row">
-                                    <input required name="firstName" type="text" onChange={this.onChange} placeholder="Ismingiz" 
+                                    <input required name="firstName" type="text" onChange={this.onChange} placeholder="Ism" 
                                     defaultValue={this.state.firstName} className="form-control required error"/>
                                 </div>
                                 <div className="row">
-                                    <input required name="lastName" type="text" onChange={this.onChange}  placeholder="Familiyangiz" 
+                                    <input required name="lastName" type="text" onChange={this.onChange}  placeholder="Familiya" 
                                     defaultValue={this.state.lastName} className="form-control required error" />
                                 </div>
                                 <div className="row">
-                                    <input required name="job" type="text" onChange={this.onChange}  placeholder="Lavozimingiz" 
+                                    <input required name="job" type="text" onChange={this.onChange}  placeholder="Lavozim" 
                                     defaultValue={this.state.job} className="form-control required error"/>
                                 </div>
                                 <div className="row">
@@ -75,7 +75,7 @@ export class Modal extends Component {
                                     defaultValue={this.state.username} className="form-control required error" />
                                 </div>
                                 <div className="row">
-                                    <input required name="password" type="password" onChange={this.onChange}  placeholder="password" 
+                                    <input required name="password" type="password" onChange={this.onChange}  placeholder="Parol" 
                                     defaultValue={this.state.password} className="form-control required error"/>
                                 </div>
                                 <button className="btn btn-success pl-5 pr-5 pt-2 pb-2" type="button" data-dismiss="modal"  onClick={this.onSubmit}>O'zgartirish</button>

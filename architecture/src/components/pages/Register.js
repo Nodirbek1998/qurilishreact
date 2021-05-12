@@ -18,6 +18,7 @@ class Register extends Component {
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        
     }
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
@@ -49,21 +50,21 @@ class Register extends Component {
                                 <h4 className="loyiha-boshqaruvi">Loyihalar Boshqaruvi</h4>
                             </div>
                             <div className="row">
-                                <input name="firstName" type="text" onChange={this.onChange} placeholder="Ismingiz" required/>
+                                <input name="firstName" type="text" onChange={this.onChange} placeholder="Ism" required/>
                             </div>
                             <div className="row">
-                                <input name="lastName" type="text" onChange={this.onChange}  placeholder="Familiyangiz" required/>
+                                <input name="lastName" type="text" onChange={this.onChange}  placeholder="Familiya" required/>
                             </div>
                             <div className="row">
-                                <input name="job" type="text" onChange={this.onChange}  placeholder="Lavozimingiz" required/>
+                                <input name="job" type="text" onChange={this.onChange}  placeholder="Lavozim" required/>
                             </div>
                             <div className="row">
                                 <input name="username" type="text" onChange={this.onChange}  placeholder="Login" required/>
                             </div>
                             <div className="row">
-                                <input name="password" type="password" onChange={this.onChange}  placeholder="password" required/>
+                                <input name="password" type="password" onChange={this.onChange}  placeholder="Parol" required/>
                             </div>
-                            <button className="btn btn-success pl-5 pr-5 pt-2 pb-2" type="submit">Ro'yhatdan o'tqazish</button>
+                            <button className="btn btn-success pl-5 pr-5 pt-2 pb-2" type="submit">Ro'yhatdan o'tkazish</button>
                         </form>
                     </div>
                 </div>
