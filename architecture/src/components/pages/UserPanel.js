@@ -26,16 +26,6 @@ export class UserPanel extends Component {
             }
             this.props.getProgress(percent)
         };
-        setInterval(() =>{
-            if(this.props.token.role[0].roleName !== 'user'){
-                this.props.history.push("/")
-            }else{
-                const id = this.props.match.params.id;
-                const percent = {
-                    projectId : id
-                }
-                this.props.getProgress(percent)}
-        }, 10000)
     }
 
     onCilick(id){
