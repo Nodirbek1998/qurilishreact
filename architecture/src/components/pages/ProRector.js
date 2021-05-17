@@ -89,11 +89,11 @@ class ProRector extends Component {
 
         return (
             <div className="container-fuild">
-                {this.props.message !== undefined ? 
+                {/* {this.props.message !== undefined ? 
                     <div class="alert alert-success alert-dismissible w-50">
                         <button type="button" class="close" data-dismiss="alert">×</button>
                         {this.props.message}
-                    </div> : ''}
+                    </div> : ''} */}
                 <div className="row derictor-navbar">
                     <nav className="navbar navbar-expand-md p-3">
                         <div className="navbar-brand ml-4" >ProRector <span className="text-capitalize">{this.props.token.username}</span> oynasi</div>

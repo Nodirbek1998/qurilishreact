@@ -77,7 +77,7 @@ class Derictor extends Component {
                     <tr key={row.id}>
                         <td>{count}</td>
                         <td>{row.projectManager.firstName} {row.projectManager.lastName}</td>
-                        <td>{row.projectName}</td>
+                        <td style={{maxWidth:"300px"}}>{row.projectName}</td>
                         <td style={{maxWidth:"300px"}}>{row.usersList.map(item =>{
                             return(<p className="m-0 p-0" key={item.id}>{item.firstName} {item.lastName}</p>)
                         })}</td>
@@ -97,11 +97,11 @@ class Derictor extends Component {
 
         return (
             <div className="container-fuild">
-                {this.props.message !== undefined ? 
+                {/* {this.props.message !== undefined ? 
                     <div class="alert alert-success alert-dismissible w-50">
                         <button type="button" class="close" data-dismiss="alert">×</button>
                         {this.props.message}
-                    </div> : ''}
+                    </div> : ''} */}
                 <div className="row derictor-navbar">
                     <nav className="navbar navbar-expand-md p-3">
                         <div className="navbar-brand ml-4" >Direktor <span className="text-capitalize">{this.props.token.username}</span> oynasi</div>

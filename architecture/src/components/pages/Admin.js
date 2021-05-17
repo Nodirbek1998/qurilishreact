@@ -84,11 +84,11 @@ export class Admin extends Component {
         return (
             
             <div className="container-fuild">
-                {this.props.message !== undefined ? 
+                {/* {this.props.message !== undefined ? 
                     <div class="alert alert-success alert-dismissible w-50">
                         <button type="button" class="close"   data-dismiss="alert">×</button>
                         {this.props.message}
-                    </div> : ''}
+                    </div> : ''} */}
                 <div className="row derictor-navbar">
                 <nav className="navbar navbar-expand-md p-3">
                     <p className="text-light ml-5 mt-2" >

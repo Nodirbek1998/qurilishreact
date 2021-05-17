@@ -90,11 +90,11 @@ export class ProjectManager extends Component {
         }
         return (
             <div className="container-fuild">
-                {this.props.message !== undefined ? 
+                {/* {this.props.message !== undefined ? 
                     <div class="alert alert-success alert-dismissible w-50">
                         <button type="button" class="close"  data-dismiss="alert">×</button>
                         {this.props.message}
-                    </div> : ''}
+                    </div> : ''} */}
                 <div className="row user-navbar">
                     <div className="col m-3">
                         <p className="text-light">
